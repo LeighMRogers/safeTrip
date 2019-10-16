@@ -1,10 +1,12 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Safe Trip: An App for Travelers
 
-## Available Scripts
+After a natural or human-made disaster, humanitarian aid workers often provide relief or development to people in some of the most unstable and unsafe places in the world, often at the last minute. Because of these challenges, they often lack access to information they need to keep themselves and their aid recipients safe.
 
-In the project directory, you can run:
+This app aims to provide these users, or any global traveler, with the latest real-time travel information on any country one seeks to visit, including travel advisories, vaccination suggestions, embassy contact details, and more. It also seeks to serve as a portal for creating itineraries for trips that include the latest safety advisories, since often areas become dangerous and one must take extra precautions even while in country. These itineraries should be postable, editable, and deletable.
 
-### `npm start`
+With these two main functionalities, I hope to create a product that offers users a helpful trip planning tool where safety is the main priority.
+
+### How to Run this App
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -12,12 +14,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
+### Entity Relationship Diagram
 
 Builds the app for production to the `build` folder.<br />
 It correctly bundles React in production mode and optimizes the build for the best performance.
