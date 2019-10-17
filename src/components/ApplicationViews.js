@@ -10,16 +10,16 @@ class ApplicationViews extends Component {
     render() {
         return (
             <React.Fragment>
-                <Route path="/" render={props => {
+                <Route exact path="/" render={props => {
                     return <ItineraryList user={this.props.userId}{...props}/>
                 }} />
                 <Route path="/login" render={props => {
                     return <Login user={this.props.userId}{...props}/>
                 }} />
-                <Route path="/register" render={props => {
+                <Route exact path="/register" render={props => {
                     return <Register user={this.props.userId} {...props}/>
                 }} />
-                <Route path="/about" render={props => {
+                <Route exact path="/about" render={props => {
                     return <About user={this.props.userId} {...props}/>
                 }} />
                 <Route exact path="/:itineraryId(\d+)" render={(props) => {
