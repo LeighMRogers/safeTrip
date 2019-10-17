@@ -6,15 +6,13 @@ class NavBar extends Component {
         return(
             <>
             <h1>Nav Bar</h1>
-            {/* <nav>
+            <nav>
                 <ul className='nav'>
                     <li className='nav-item'>
-                        <Link className='nav-link' to='/about'>
-                            <button className='navBtn'>About</button>
-                        </Link>
+                        <Link className='nav-link' to='/about'>About</Link>
                     </li>
                 </ul>
-            </nav> */}
+            </nav>
             </>
         )
     }
