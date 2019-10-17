@@ -20,10 +20,7 @@ With these main functionalities, I hope to create a product that offers users a 
 
 Below outlines the relationship between entities in the app:
 
-![Safe Trip App ERD](https://github.com/LeighMRogers/safe-trip-capstone/blob/master/public/images/Front-End-Capstone.png "Safe Trip App ERD")
+![Safe Trip App ERD](https://github.com/LeighMRogers/safe-trip-capstone/blob/master/public/images/Front-EndCapstoneUpdated.png "Safe Trip App ERD")
 
 ### Creator
-Leigh Rogers
-Nashville Software School
-Front-End Development Capstone
-Cohort 35
+Leigh Rogers, Nashville Software School Front-End Capstone
