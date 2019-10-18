@@ -13,7 +13,7 @@ class ApplicationViews extends Component {
                 <Route exact path="/" render={props => {
                     return <ItineraryList user={this.props.userId}{...props}/>
                 }} />
-                <Route path="/login" render={props => {
+                <Route exact path="/login" render={props => {
                     return <Login user={this.props.userId}{...props}/>
                 }} />
                 <Route exact path="/register" render={props => {
