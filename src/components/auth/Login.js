@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AuthManager from '../../modules/AuthManager';
 import Register from '../auth/Register';
 import { withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom/cjs/react-router-dom';
 // import { Spring } from 'react-spring/renderprops';
 
 class Login extends Component {
@@ -12,13 +13,13 @@ class Login extends Component {
 		hideReg: true
 	};
 
-	showLogin = () => {
-		this.setState({ hideReg: false });
-	};
+	// showLogin = () => {
+	// 	this.setState({ hideReg: false });
+	// };
 
-	hideReg = () => {
-		this.setState({ hideReg: true });
-	};
+	// hideReg = () => {
+	// 	this.setState({ hideReg: true });
+	// };
 
 	// Update state whenever an input field is edited
 	handleFieldChange = evt => {
@@ -92,13 +93,12 @@ class Login extends Component {
 								/>
 							</div>
 							<div className='formField'>
-								{/* <Checkbox>Remember me</Checkbox> */}
 								<button type='submit' className='login-form-button'>
 									Log in
 								</button>
-								<p className='regLink' onClick={this.showLogin} href=''>
-									Or register now!
-								</p>
+								<Link className='regLink' to="/register">
+									<p>Or register now!</p>
+								</Link>
 							</div>
 						</form>
 						{/* </div>

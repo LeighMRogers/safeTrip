@@ -1,7 +1,26 @@
 import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom';
+import AuthManager from '../../modules/AuthManager';
 
 class NavBar extends Component {
+
+    state = {
+		userName: ''
+	};
+
+	handleLogout = () => {
+		this.props.clearUser();
+		this.props.history.push('/');
+	};
+
+	componentDidMount() {
+		AuthManager.getUserById(this.props.activeUser).then(data => {
+			this.setState({
+				userName: data.name
+			});
+		});
+	}
+
     render() {
         return(
             <>
@@ -9,7 +28,8 @@ class NavBar extends Component {
             <nav>
                 <ul className='nav'>
                     <li className='nav-item'>
-                        <Link className='nav-link' to='/about'>About</Link>
+                        <Link className='nav-link' to='/about'>About</Link></li>
+                    <li><Link className='logout' to='/login'>Logout</Link>
                     </li>
                 </ul>
             </nav>

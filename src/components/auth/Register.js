@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AuthManager from '../../modules/AuthManager';
+import { Link } from 'react-router-dom';
 
 
 class Register extends Component {
@@ -99,9 +100,9 @@ class Register extends Component {
                         <button type='submit' className='login-form-button'>
                             Register
                         </button>
-                        <p className='regLink' onClick={this.props.hideReg} href=''>
-                            Go back to Login!
-                        </p>
+                        <Link className='regLink' to="/login">
+                            <p>Go back to Login!</p>
+                        </Link>
                     </div>
                 </form>
             </>
