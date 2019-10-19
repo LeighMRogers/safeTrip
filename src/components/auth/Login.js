@@ -10,7 +10,7 @@ class Login extends Component {
 	state = {
 		userName: '',
 		password: '',
-		hideReg: true
+		// hideReg: true
 	};
 
 	// showLogin = () => {
@@ -55,16 +55,8 @@ class Login extends Component {
 	render() {
 		return (
 			<>
-				{this.state.hideReg && (
+				{/* {this.state.hideReg && ( */}
 					<>
-						{/* <Spring
-							from={{ opacity: 0 }}
-							to={{ opacity: 1 }}
-							//config={{ duration: 500 }}
-						>
-							{props => (
-								<div style={props}> */}
-
 						<form
 							onSubmit={this.handleLogin}
 							id='loginForm'
@@ -101,9 +93,6 @@ class Login extends Component {
 								</Link>
 							</div>
 						</form>
-						{/* </div>
-							)}
-						</Spring> */}
 					</>
 				)}
 

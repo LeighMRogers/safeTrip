@@ -36,7 +36,7 @@ class App extends Component {
 	render() {
 		return (
 			<div className='App'>
-				{this.state.user ? (
+				{(this.state.user) ?
 					<>
 						<Nav
 							clearUser={this.clearUser}
@@ -50,7 +50,7 @@ class App extends Component {
 							activeUser={this.state.activeUser}
 						/>
 					</>
-				) : (
+				:
 					<Login
 						getUser={this.getUser}
 						setUser={this.setUser}
@@ -58,7 +58,7 @@ class App extends Component {
 						{...this.props}
 						activeUser={this.state.activeUser}
 					/>
-				)}
+				}
 			</div>
 		);
 	}
