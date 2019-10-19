@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import AuthManager from '../../modules/AuthManager';
-import Register from '../auth/Register';
-import { withRouter } from 'react-router-dom';
-import { Link } from 'react-router-dom/cjs/react-router-dom';
-// import { Spring } from 'react-spring/renderprops';
 
 class Login extends Component {
 	// Set initial state
@@ -28,90 +24,44 @@ class Login extends Component {
 		this.setState(stateToChange);
 	};
 
-	handleLogin = e => {
-        console.log("handle login props", this.props)
-		e.preventDefault();
-		let userName = this.state.userName;
-		let password = this.state.password;
-		AuthManager.getUser(userName).then(response => {
-			if (response.length === 0) {
-				alert('Please enter a valid User Name.');
-			} else if (response.length === 1 && response[0].password !== password) {
-				alert('Password is incorrect, please try again.');
-				// starting the if statement to check for empty fields//
-			} else if (password === '') {
-				alert('Please fill the Password Form');
-			} else if (userName === '') {
-				alert('Please enter a valid email address');
-			} else if (response[0].password === password) {
-				//response[0].id is the ID of the user you logged in with,
-				//in case of "Steve" it would be "1"
-				this.props.setUser(response[0].id);
-				this.props.history.push(`/`);
-			}
-		});
-	};
+	handleLogin = (e) => {
+        e.preventDefault()
+        AuthManager.getUserData("users").then((users) => {
+            let singleUser = users.find(
+                user =>
+                    user.password.toLowerCase() === this.state.password.toLowerCase() &&
+                    user.userName.toLowerCase() === this.state.userName.toLowerCase()
+            );
+            if (this.state.userName === "") {
+                window.alert("Please enter user name")
+            } else if (this.state.password === "") {
+                window.alert("Please enter password")
+            } else if (singleUser) {
+                this.props.setUser(singleUser);
+            } else {
+                window.alert("User name and password do not match")
+            }
+        })
+
+    }
 
 	render() {
-		return (
-			<>
-				{/* {this.state.hideReg && ( */}
-					<>
-						<form
-							onSubmit={this.handleLogin}
-							id='loginForm'
-							className='login-form'
-						>
-							<div className='formField'>
-								<input
-									placeholder='Username'
-									onChange={this.handleFieldChange}
-									type='userName'
-									id='userName'
-									required=''
-									autoFocus=''
-								/>
-							</div>
-							<div className='formField'>
-								<input
-									prefix={
-										<icon type='lock' style={{ color: 'rgba(0,0,0,.25)' }} />
-									}
-									type='password'
-									placeholder='Password'
-									onChange={this.handleFieldChange}
-									id='password'
-									required=''
-								/>
-							</div>
-							<div className='formField'>
-								<button type='submit' className='login-form-button'>
-									Log in
-								</button>
-								<Link className='regLink' to="/register">
-									<p>Or register now!</p>
-								</Link>
-							</div>
-						</form>
-					</>
-				)}
-
-				{!this.state.hideReg && (
-					// <Spring
-					// 	from={{ opacity: 0 }}
-					// 	to={{ opacity: 1 }}
-					// 	//config={{ duration: 500 }}
-					// >
-					// 	{props => (
-					// 		<div style={props}>
-					<Register {...this.props} hideReg={this.hideReg} />
-					// 		</div>
-					// 	)}
-					// </Spring>
-				)}
-			</>
-		);
-	}
+        return (
+            <>
+            <div className="logRegForm">
+                <h3 className="logRegTitle">Login</h3>
+                <form onSubmit={this.handleLogin}>
+                        <input onChange={this.handleFieldChange}
+                            required="" autoFocus="" placeholder="User name" name="username" id="userName"/>
+                        <input onChange={this.handleFieldChange} type="password"
+                            required="" type="password" name="password" id="password"
+                            placeholder="Password" />
+                    <button className="submit" type="button">Log In</button>
+                </form>
+             </div>
+            </>
+        );
+    }
 }
 
-export default withRouter(Login);
+export default Login;
