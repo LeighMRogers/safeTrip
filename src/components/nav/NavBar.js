@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-// import AuthManager from '../../modules/AuthManager';
 
 class NavBar extends Component {
 

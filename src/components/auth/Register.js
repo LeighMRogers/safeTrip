@@ -15,6 +15,7 @@ class Register extends Component {
       const stateToChange = {}
       stateToChange[event.target.id] = event.target.value
       this.setState(stateToChange)
+      console.log("handling registration field change", this.handleFieldChange)
     }
 
     handleRegister = (e) => {
@@ -37,18 +38,22 @@ class Register extends Component {
             email: this.state.email,
             password: this.state.password
           };
+          console.log("new user obj", newUser)
           AuthManager.createUser(newUser)
             .then((createdUser) => {
               //This determines which page you land on upon registration
               this.props.setUser(createdUser)
+              console.log("created user", createdUser)
             }
             )
         }
       }
       )
+      console.log("handling registration", this.handleRegister)
     }
 
     render() {
+      console.log("registration return")
       return (
         <>
           <div className="logRegForm">
@@ -70,7 +75,7 @@ class Register extends Component {
                   id="password"
                   placeholder="Password"
                   required="" />
-              <button className="submit" type="button">Register</button>
+              <button className="submit" type="submit">Register</button>
             </form>
           </div>
         </>

@@ -6,7 +6,7 @@ class Login extends Component {
 	state = {
 		userName: '',
 		password: '',
-		// hideReg: true
+        // hideReg: true
 	};
 
 	// showLogin = () => {
@@ -21,10 +21,12 @@ class Login extends Component {
 	handleFieldChange = evt => {
 		const stateToChange = {};
 		stateToChange[evt.target.id] = evt.target.value;
-		this.setState(stateToChange);
+        this.setState(stateToChange);
+        console.log("handling login field change", this.handleFieldChange)
 	};
 
 	handleLogin = (e) => {
+        console.log("login button has been clicked")
         e.preventDefault()
         AuthManager.getUserData("users").then((users) => {
             let singleUser = users.find(
@@ -32,6 +34,7 @@ class Login extends Component {
                     user.password.toLowerCase() === this.state.password.toLowerCase() &&
                     user.userName.toLowerCase() === this.state.userName.toLowerCase()
             );
+            console.log(singleUser);
             if (this.state.userName === "") {
                 window.alert("Please enter user name")
             } else if (this.state.password === "") {
@@ -42,10 +45,11 @@ class Login extends Component {
                 window.alert("User name and password do not match")
             }
         })
-
+        console.log("handling login", this.handleLogin)
     }
 
 	render() {
+        console.log("login return")
         return (
             <>
             <div className="logRegForm">
@@ -56,7 +60,7 @@ class Login extends Component {
                         <input onChange={this.handleFieldChange} type="password"
                             required="" type="password" name="password" id="password"
                             placeholder="Password" />
-                    <button className="submit" type="button">Log In</button>
+                    <button className="submit" type="submit">Log In</button>
                 </form>
              </div>
             </>

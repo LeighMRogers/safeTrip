@@ -25,19 +25,22 @@
       "userName": "LeighR",
       "password": "somaLi917",
       "name": "Leigh",
-      "id": 4
+      "id": 4,
+      "email": "leigh@leigh.com"
     },
     {
       "userName": "Neil",
       "password": "pass",
       "name": "Neil",
-      "id": 5
+      "id": 5,
+      "email": "neil@neil.com"
     },
     {
       "userName": "LMR",
       "password": "lmr",
       "name": "Leigh",
-      "id": 6
+      "id": 6,
+      "email": "lmr@lmr.com"
     }
   ]
 }
