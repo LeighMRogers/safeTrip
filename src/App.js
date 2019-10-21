@@ -1,41 +1,40 @@
-import React, { Component } from 'react'
-import NavBar from "./components/nav/NavBar"
-import ApplicationViews from "./components/ApplicationViews"
-import "./App.css"
+import React, { Component } from "react";
+// import ApplicationViews from "../ApplicationViews";
+import NavBar from "./components/nav/NavBar";
+import Login from "./components/auth/Login";
+import Register from "./components/auth/Register";
+import About from "./components/about/About"
 
 class App extends Component {
   state = {
     user: false
   }
-
-  // Check if credentials are in local storage
+  // Check if credentials are in session storage
   //returns true/false
-  isAuthenticated = () => localStorage.getItem("credentials") !== null
+  isAuthenticated = () => sessionStorage.getItem("credentials") !== null
 
   setUser = (authObj) => {
     /*
       For now, just store the email and password that
       the customer enters into local storage.
     */
-    localStorage.setItem(
+    sessionStorage.setItem(
       "credentials",
       JSON.stringify(authObj)
     )
     this.setState({
       user: this.isAuthenticated()
     });
+    console.log("auth object", authObj)
   }
 
   clearUser = () => {
-    localStorage.clear()
-
+    sessionStorage.clear()
     this.setState({
-        user: this.isAuthenticated()
+      user: this.isAuthenticated()
     });
-
   }
-
-  componentDidMount(){
+  componentDidMount() {
     this.setState({
       user: this.isAuthenticated()
     })
@@ -43,12 +42,21 @@ class App extends Component {
 
   render() {
     return (
+      <React.Fragment>
+      {(this.state.user) ?
       <>
-        <NavBar user={this.state.user} clearUser={this.clearUser}/>
-        <ApplicationViews user={this.state.user}
-                          setUser={this.setUser} />
+        <NavBar clearUser={this.clearUser} />
+        {/* <ApplicationViews /> */}
       </>
-    )
+      :<>
+       <div className="logRegContainer">
+        <Login setUser={this.setUser}/>
+        <Register setUser={this.setUser} />
+        <About />
+       </div>
+      </>}
+      </React.Fragment>
+    );
   }
 }
 

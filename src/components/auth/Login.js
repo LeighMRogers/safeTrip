@@ -1,78 +1,71 @@
 import React, { Component } from 'react';
-// import Register from '../auth/Register';
-import { withRouter } from 'react-router-dom';
+import AuthManager from '../../modules/AuthManager';
 
 class Login extends Component {
-    // Set initial state
+	// Set initial state
 	state = {
 		userName: '',
 		password: '',
-		hideReg: true
+        // hideReg: true
 	};
 
-	showLogin = () => {
-		this.setState({ hideReg: false });
-	};
+	// showLogin = () => {
+	// 	this.setState({ hideReg: false });
+	// };
 
-	hideReg = () => {
-		this.setState({ hideReg: true });
-	};
+	// hideReg = () => {
+	// 	this.setState({ hideReg: true });
+	// };
 
-    // Update state whenever an input field is edited
+	// Update state whenever an input field is edited
 	handleFieldChange = evt => {
 		const stateToChange = {};
 		stateToChange[evt.target.id] = evt.target.value;
-		this.setState(stateToChange);
+        this.setState(stateToChange);
+        console.log("handling login field change", this.handleFieldChange)
 	};
 
-	// handleLogin = e => {
-	// 	e.preventDefault();
-	// 	let userName = this.state.userName;
-	// 	let password = this.state.password;
-	// 	AuthManager.getUser(userName).then(response => {
-	// 		if (response.length === 0) {
-	// 			alert('Please enter a valid User Name.');
-	// 		} else if (response.length === 1 && response[0].password !== password) {
-	// 			alert('Password is incorrect, please try again.');
-	// 			// starting the if statement to check for empty fields//
-	// 		} else if (password === '') {
-	// 			alert('Please fill the Password Form');
-	// 		} else if (userName === '') {
-	// 			alert('Please enter a valid email address');
-	// 		} else if (response[0].password === password) {
-	// 			//response[0].id is the ID of the user you logged in with,
-	// 			//in case of "Steve" it would be "1"
-	// 			this.props.setUser(response[0].id);
-	// 			this.props.history.push(`/`);
-	// 		}
-	// 	});
-	// };
+	handleLogin = (e) => {
+        console.log("login button has been clicked")
+        e.preventDefault()
+        AuthManager.getUserData("users").then((users) => {
+            let singleUser = users.find(
+                user =>
+                    user.password.toLowerCase() === this.state.password.toLowerCase() &&
+                    user.userName.toLowerCase() === this.state.userName.toLowerCase()
+            );
+            console.log(singleUser);
+            if (this.state.userName === "") {
+                window.alert("Please enter user name")
+            } else if (this.state.password === "") {
+                window.alert("Please enter password")
+            } else if (singleUser) {
+                this.props.setUser(singleUser);
+            } else {
+                window.alert("User name and password do not match")
+            }
+        })
+        console.log("handling login", this.handleLogin)
+    }
 
-    render() {
-        console.log("is the log in form triggered")
+	render() {
+        console.log("login return")
         return (
-          <form onSubmit={this.handleLogin}>
-            <fieldset>
-                <h3>Please sign in</h3>
-                <div className="formgrid">
-                    <input onChange={this.handleFieldChange} type="email"
-                        id="email"
-                        placeholder="Email address"
-                        required="" autoFocus="" />
-                    <label htmlFor="inputEmail">Email address</label>
-                    <input onChange={this.handleFieldChange} type="password"
-                        id="password"
-                        placeholder="Password"
-                        required="" />
-                    <label htmlFor="inputPassword">Password</label>
-                </div>
-                <button type="submit">
-                    Sign in
-                </button>
-            </fieldset>
-          </form>
-        )
-      }
+            <>
+            <div className="logRegForm">
+                <h3 className="logRegTitle">Login</h3>
+                <form onSubmit={this.handleLogin}>
+                        <input onChange={this.handleFieldChange}
+                            required="" autoFocus="" placeholder="User name" name="username" id="userName"/>
+                        <input onChange={this.handleFieldChange} type="password"
+                            required="" type="password" name="password" id="password"
+                            placeholder="Password" />
+                    <button className="submit" type="submit">Log In</button>
+                </form>
+             </div>
+            </>
+        );
+    }
 }
 
-export default withRouter(Login);
+export default Login;

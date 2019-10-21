@@ -1,0 +1,46 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "steve",
+      "userName": "steve",
+      "password": "pass",
+      "email": "steve@steve.com"
+    },
+    {
+      "id": 2,
+      "name": "sam",
+      "userName": "sam",
+      "password": "pass",
+      "email": "sam@sam.com"
+    },
+    {
+      "id": 3,
+      "name": "sue",
+      "userName": "sue",
+      "password": "pass",
+      "email": "sue@sue.com"
+    },
+    {
+      "userName": "LeighR",
+      "password": "somaLi917",
+      "name": "Leigh",
+      "id": 4,
+      "email": "leigh@leigh.com"
+    },
+    {
+      "userName": "Neil",
+      "password": "pass",
+      "name": "Neil",
+      "id": 5,
+      "email": "neil@neil.com"
+    },
+    {
+      "userName": "LMR",
+      "password": "lmr",
+      "name": "Leigh",
+      "id": 6,
+      "email": "lmr@lmr.com"
+    }
+  ]
+}
