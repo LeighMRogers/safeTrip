@@ -49,7 +49,6 @@ class Login extends Component {
     }
 
 	render() {
-        console.log("login return")
         return (
             <>
             <div className="logRegForm">
