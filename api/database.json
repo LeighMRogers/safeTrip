@@ -41,6 +41,13 @@
       "name": "Leigh",
       "id": 6,
       "email": "lmr@lmr.com"
+    },
+    {
+      "name": "sage",
+      "userName": "sage",
+      "email": "sage@sage",
+      "password": "sage",
+      "id": 7
     }
   ]
 }
