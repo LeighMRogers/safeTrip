@@ -49,5 +49,21 @@
       "password": "sage",
       "id": 7
     }
+  ],
+  "itineraries": [
+    {
+      "id": 1,
+      "itineraryName": "East Africa",
+      "itineraryDate": "09-20-2019",
+      "note": "string",
+      "userId": 2
+    },
+    {
+      "itineraryName": "Taiwan Trip",
+      "itineraryDate": "2019-10-25",
+      "note": "lsdfjlsdkfj",
+      "userId": "1",
+      "id": 9
+    }
   ]
 }

@@ -8,7 +8,10 @@ class ApplicationViews extends Component {
         return (
             <React.Fragment>
                 <Route exact path="/" render={props => {
-                    return <ItineraryList user={this.props.userId}{...props}/>
+                    return <ItineraryList
+                        user={this.props.userId}
+                        {...props}
+                        getUser={this.props.getUser}/>
                 }} />
                 <Route exact path="/:itineraryId(\d+)" render={(props) => {
                     return <ItineraryDetails itineraryId={parseInt(props.match.params.itineraryId)} {...props} />

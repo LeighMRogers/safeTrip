@@ -1,44 +1,52 @@
 import React, { Component } from 'react';
-// import ItineraryManager from '../../modules/ItineraryManager';
-// import ItineraryCard from './ItineraryCard';
-// import ItineraryAddForm from '../itineraries/ItineraryAddForm';
+import ItineraryManager from '../../modules/ItineraryManager';
+import ItineraryCard from './ItineraryCard';
+import ItineraryAddForm from '../itineraries/ItineraryAddForm';
 
 class ItineraryList extends Component {
 	//define what this component needs to render
 	state = {
-		itineraries: []
+		itineraries: [],
+		user: ""
 	};
 
-	// componentDidMount() {
-	// 	this.getData();
-	// }
+	componentDidMount() {
+		this.getData();
+	}
 
-	// getData = () => {
-	// 	ItineraryManager.getItineraries(this.props.activeUser).then(itineraries => {
-	// 		this.setState({
-	// 			itineraries: itineraries
-	// 		});
-	// 	});
-	// };
+	getData = () => {
+		let userId = this.props.getUser()
+		ItineraryManager.getAll(userId).then(itineraries => {
+			this.setState({
+				itineraries: itineraries,
+				user: userId
+			});
+		});
+	};
 
 	render() {
 		return (
-            <h1>ItineraryList</h1>
-			// <div className='mainContainer'>
-			// 	<div className='sectionHeader'>
-			// 		<h1>NEWS</h1>
+            <>
+			<div className='mainContainer'>
+				<div className='sectionHeader'>
+					<h1>Itineraries</h1>
 
-			// 		<AddItineraryForm getData={this.getData} />
-			// 	</div>
-			// 	{this.state.itineraries.map(itinerary => (
-			// 		<ItineraryCard
-			// 			key={itinerary.id}
-			// 			itinerary={itinerary}
-			// 			{...this.props}
-			// 			getData={this.getData}
-			// 		/>
-			// 	))}
-			// </div>
+                    <ItineraryAddForm
+                        getData={this.getData}
+						{...this.props}
+						user={this.state.user} />
+				</div>
+				{this.state.itineraries.map(itinerary => (
+					<ItineraryCard
+                        key={itinerary.id}
+                        itineraryId={itinerary.id}
+						itinerary={itinerary}
+						{...this.props}
+						getData={this.getData}
+					/>
+				))}
+			</div>
+            </>
 		);
 	}
 }
