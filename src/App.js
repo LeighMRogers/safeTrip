@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import ApplicationViews from "../ApplicationViews";
+import ApplicationViews from "../src/components/ApplicationViews";
 import NavBar from "./components/nav/NavBar";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
@@ -13,6 +13,10 @@ class App extends Component {
   //returns true/false
   isAuthenticated = () => sessionStorage.getItem("credentials") !== null
 
+  getUser = () => {
+    return sessionStorage.getItem("credentials")
+  }
+
   setUser = (authObj) => {
     /*
       For now, just store the email and password that
@@ -20,7 +24,7 @@ class App extends Component {
     */
     sessionStorage.setItem(
       "credentials",
-      JSON.stringify(authObj)
+      JSON.stringify(authObj.id)
     )
     this.setState({
       user: this.isAuthenticated()
@@ -46,7 +50,7 @@ class App extends Component {
       {(this.state.user) ?
       <>
         <NavBar clearUser={this.clearUser} />
-        {/* <ApplicationViews /> */}
+        <ApplicationViews getUser={this.getUser}/>
       </>
       :<>
        <div className="logRegContainer">
