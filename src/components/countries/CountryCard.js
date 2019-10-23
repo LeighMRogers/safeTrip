@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
 import CountryManager from '../../modules/CountryManager'
 
 class CountryCard extends Component {
@@ -17,8 +16,7 @@ class CountryCard extends Component {
           <p>Advisory Score: {this.props.data.countrycode.advisory.score}</p>
           <p>Advisory Message:{this.props.data.countrycode.advisory.message}</p>
           <p>Updated:{this.props.data.countrycode.advisory.updated}</p>
-
-          <button type="button" onClick={() => this.props.handleDelete(this.props.animal.id)}>Delete Country</button>
+          {/* <button type="button" onClick={() => this.props.handleDelete(this.props..id)}>Delete Country</button> */}
         </div>
       </div>
     );

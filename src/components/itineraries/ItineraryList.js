@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ItineraryManager from '../../modules/ItineraryManager';
 import ItineraryCard from './ItineraryCard';
 import ItineraryAddForm from '../itineraries/ItineraryAddForm';
+import CountryManager from '../../modules/CountryManager';
 
 class ItineraryList extends Component {
 	//define what this component needs to render
@@ -17,6 +18,9 @@ class ItineraryList extends Component {
 	getData = () => {
 		let userId = this.props.getUser()
 		ItineraryManager.getAll(userId).then(itineraries => {
+			itineraries.forEach(itinerary => {
+				CountryManager.getCountry(itinerary.countryCode);
+			})
 			this.setState({
 				itineraries: itineraries,
 				user: userId
