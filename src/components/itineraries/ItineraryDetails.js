@@ -1,12 +1,14 @@
-import CountryCard from '../countries/CountryCard'
 import React, { Component } from 'react';
 import ItineraryManager from '../../modules/ItineraryManager';
+import CountryManager from '../../modules/CountryManager';
 
 class ItineraryDetails extends Component {
 
   state = {
       itineraryName: "",
       itineraryDate: "",
+      countryCode: "",
+      country: "",
       note:"",
       userId: "",
       loadingStatus: true,
@@ -18,7 +20,17 @@ class ItineraryDetails extends Component {
     this.setState({loadingStatus: true})
     ItineraryManager.delete(this.props.itineraryId)
     .then(() => this.props.history.push("/"))
-}
+  }
+
+  // getCountryName() {
+  //   CountryManager.getCountry(this.state.countryCode)
+  //   .then(country => {
+  //     console.log(country.data[this.state.countryCode].name);
+  //     this.setState({
+  //       country: country.data[this.state.countryCode].name
+  //     });
+  //   })
+  // }
 
   componentDidMount(){
     console.log("ItineraryDetail: ComponentDidMount");
@@ -28,11 +40,16 @@ class ItineraryDetails extends Component {
       this.setState({
         itineraryName: itinerary.itineraryName,
         itineraryDate: itinerary.itineraryDate,
+        countryCode: itinerary.countryCode,
+        country: itinerary.country,
         note: itinerary.note,
         userId: this.state.userId,
         loadingStatus: false
       });
-    });
+    })
+    // .then(() => {
+    //   this.getCountryName();
+    //   })
   }
 
   render() {
@@ -41,7 +58,7 @@ class ItineraryDetails extends Component {
         <div className="card-content">
             <h3><span style={{ color: 'darkslategrey' }}>{this.state.itineraryName}</span></h3>
             <p>Date: {this.state.itineraryDate}</p>
-            {/* <p>Countries: {this.props.data.countrycode.name}</p> */}
+            <p>Countries: {this.state.country}</p>
             {/* <p>Advisory Score: {this.props.data.countrycode.advisory.score}</p> */}
             <p>Note: {this.state.note}</p>
             <button type="button" onClick={() => {this.props.history.push(`/${this.props.itineraryId}/edit`)}}>Edit Itinerary</button>

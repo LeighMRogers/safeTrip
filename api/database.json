@@ -66,6 +66,32 @@
       "note": "get ready",
       "userId": 1,
       "id": 16
+    },
+    {
+      "itineraryName": "Madi goes to Japan",
+      "itineraryDate": "2019-10-31",
+      "countryCode": "JP",
+      "note": "yaay",
+      "userId": 1,
+      "id": 17
+    },
+    {
+      "itineraryName": "Le Tour de France de Nick",
+      "itineraryDate": "2019-10-24",
+      "countryCode": "FR",
+      "country": "France",
+      "note": "Oktoberfest",
+      "userId": 1,
+      "id": 18
+    },
+    {
+      "itineraryName": "Sage goes to the mall in Brazil",
+      "itineraryDate": "2019-10-31",
+      "countryCode": "BR",
+      "country": "Brazil",
+      "note": "shop shop shop",
+      "userId": 1,
+      "id": 19
     }
   ]
 }

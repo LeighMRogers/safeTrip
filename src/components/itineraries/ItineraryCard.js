@@ -1,12 +1,26 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import ItineraryManager from '../../modules/ItineraryManager'
+import CountryManager from '../../modules/CountryManager';
 
 class ItineraryCard extends Component {
+
+  state = {
+    country: ""
+  }
 
   handleDelete = id => {
     ItineraryManager.delete(id)
     .then(() => this.props.getData());
+  }
+
+  componentDidMount() {
+    CountryManager.getCountry(this.props.itinerary.countryCode)
+    .then(country => {
+      this.setState({
+        country: country.data[this.props.itinerary.countryCode].name
+      });
+    })
   }
 
   render() {
@@ -18,7 +32,7 @@ class ItineraryCard extends Component {
           </span></h2>
           <h3>{this.props.itinerary.itineraryName}</h3>
           <p>{this.props.itinerary.itineraryDate}</p>
-          <p>{this.props.itinerary.countrySearch}</p>
+          <p>{this.state.country}</p>
           <p>{this.props.itinerary.note}</p>
 
           <Link to={`/${this.props.itineraryId}`}><button>Details</button></Link>

@@ -10,6 +10,7 @@ class ItinararyAddForm extends Component {
         countrySearch: "",
         note:"",
         userId: "",
+        countryCode: "",
         country: "",
         loadingStatus: true,
     }
@@ -19,9 +20,21 @@ class ItinararyAddForm extends Component {
         .then((allCountries) => {
           Object.keys(allCountries.data).forEach((key) => {
             if (allCountries.data[key].name === searchTerm) {
-                this.setState({country: allCountries.data[key]})
+                this.setState({countryCode: allCountries.data[key]})
             }
           })
+        })
+        .then(() => {
+            this.getCountryName();
+        })
+      }
+
+    getCountryName() {
+        CountryManager.getCountry(this.state.countryCode.iso_alpha2)
+        .then(country => {
+          this.setState({
+            country: country.data[this.state.countryCode.iso_alpha2].name
+          });
         })
       }
 
@@ -42,7 +55,8 @@ class ItinararyAddForm extends Component {
             const itinerary = {
                 itineraryName: this.state.itineraryName,
                 itineraryDate: this.state.itineraryDate,
-                countryCode: this.state.country.iso_alpha2,
+                countryCode: this.state.countryCode.iso_alpha2,
+                country: this.state.country,
                 note: this.state.note,
                 userId: parseInt(this.props.user)
             };

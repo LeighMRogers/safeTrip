@@ -16,7 +16,9 @@ class ApplicationViews extends Component {
                         getUser={this.props.getUser}/>
                 }} />
                 <Route exact path="/:itineraryId(\d+)" render={(props) => {
-                    return <ItineraryDetails itineraryId={parseInt(props.match.params.itineraryId)} {...props} />
+                    return <ItineraryDetails
+                        itineraryId={parseInt(props.match.params.itineraryId)} 
+                        {...props} />
                 }} />
                 <Route path="/:itineraryId(\d+)/edit" render={props => {
                     return <ItineraryEditForm {...props} />
