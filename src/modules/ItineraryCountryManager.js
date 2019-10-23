@@ -1,0 +1,20 @@
+const remoteURL = " http://localhost:8088"
+
+export default {
+    delete(id) {
+        return fetch(`${{remoteURL}}/${id}`, {
+            method: "DELETE"
+        })
+        .then(result => result.json())
+      },
+      post(newCountry) {
+        return fetch(`${remoteURL}/`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newCountry)
+        }).then(data => data.json())
+      }
+      // there is no edit because data is coming from the API
+}

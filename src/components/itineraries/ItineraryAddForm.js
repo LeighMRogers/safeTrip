@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ItineraryManager from '../../modules/ItineraryManager';
+import CountryManager from '../../modules/CountryManager'
 
 const userObj = sessionStorage.getItem("credentials")
 class ItinararyAddForm extends Component {
@@ -9,8 +10,33 @@ class ItinararyAddForm extends Component {
         countrySearch: "",
         note:"",
         userId: "",
+        countryCode: "",
+        country: "",
         loadingStatus: true,
     }
+
+    handleCountrySearch = searchTerm => {
+        CountryManager.getAllCountries()
+        .then((allCountries) => {
+          Object.keys(allCountries.data).forEach((key) => {
+            if (allCountries.data[key].name === searchTerm) {
+                this.setState({countryCode: allCountries.data[key]})
+            }
+          })
+        })
+        .then(() => {
+            this.getCountryName();
+        })
+      }
+
+    getCountryName() {
+        CountryManager.getCountry(this.state.countryCode.iso_alpha2)
+        .then(country => {
+          this.setState({
+            country: country.data[this.state.countryCode.iso_alpha2].name
+          });
+        })
+      }
 
     handleFieldChange = evt => {
         const stateToChange = {};
@@ -29,7 +55,8 @@ class ItinararyAddForm extends Component {
             const itinerary = {
                 itineraryName: this.state.itineraryName,
                 itineraryDate: this.state.itineraryDate,
-                countrySearch: this.state.countrySearch,
+                countryCode: this.state.countryCode.iso_alpha2,
+                country: this.state.country,
                 note: this.state.note,
                 userId: parseInt(this.props.user)
             };
@@ -71,6 +98,7 @@ class ItinararyAddForm extends Component {
                         id="countrySearch"
                         placeholder="Search Countries"
                         />
+                        <button type="button" onClick={() => this.handleCountrySearch(this.state.countrySearch)}>Find All Countries</button>
                         <input
                         type="text"
                         required

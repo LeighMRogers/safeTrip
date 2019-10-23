@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import ItineraryList from './itineraries/ItineraryList'
 import ItineraryDetails from './itineraries/ItineraryDetails'
 import ItineraryEditForm from './itineraries/ItineraryEditForm'
+import CountryCard from './countries/CountryCard'
 
 class ApplicationViews extends Component {
     render() {
@@ -15,7 +16,9 @@ class ApplicationViews extends Component {
                         getUser={this.props.getUser}/>
                 }} />
                 <Route exact path="/:itineraryId(\d+)" render={(props) => {
-                    return <ItineraryDetails itineraryId={parseInt(props.match.params.itineraryId)} {...props} />
+                    return <ItineraryDetails
+                        itineraryId={parseInt(props.match.params.itineraryId)} 
+                        {...props} />
                 }} />
                 <Route path="/:itineraryId(\d+)/edit" render={props => {
                     return <ItineraryEditForm {...props} />
