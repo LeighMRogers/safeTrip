@@ -64,6 +64,34 @@
       "note": "lsdfjlsdkfj",
       "userId": "1",
       "id": 9
+    },
+    {
+      "itineraryName": "Japan a third time",
+      "itineraryDate": "2019-10-24",
+      "note": "will you add?",
+      "userId": 1,
+      "id": 10
+    },
+    {
+      "itineraryName": "Heidi goes to Spain",
+      "itineraryDate": "2019-10-31",
+      "note": "halloween hell",
+      "userId": 1,
+      "id": 11
+    },
+    {
+      "itineraryName": "Nick goes to England",
+      "itineraryDate": "2019-10-24",
+      "note": "sdfsdfsdf",
+      "userId": 1,
+      "id": 12
+    },
+    {
+      "itineraryName": "Post NSS vacation",
+      "itineraryDate": "2019-11-28",
+      "note": "leaving now",
+      "userId": 1,
+      "id": 13
     }
   ]
 }
