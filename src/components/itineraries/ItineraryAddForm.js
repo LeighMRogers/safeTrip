@@ -29,6 +29,7 @@ class ItinararyAddForm extends Component {
             const itinerary = {
                 itineraryName: this.state.itineraryName,
                 itineraryDate: this.state.itineraryDate,
+                countrySearch: this.state.countrySearch,
                 note: this.state.note,
                 userId: parseInt(this.props.user)
             };
@@ -36,6 +37,7 @@ class ItinararyAddForm extends Component {
 
             // Create the employee and redirect user to employee list
             ItineraryManager.post(itinerary)
+            .then(() => this.props.getData())
             .then(() => this.props.history.push("/"));
         }
     };
