@@ -18,6 +18,7 @@ class ItineraryCard extends Component {
           </span></h2>
           <h3>{this.props.itinerary.itineraryName}</h3>
           <p>{this.props.itinerary.itineraryDate}</p>
+          <p>{this.props.itinerary.countrySearch}</p>
           <p>{this.props.itinerary.note}</p>
 
           <Link to={`/${this.props.itineraryId}`}><button>Details</button></Link>

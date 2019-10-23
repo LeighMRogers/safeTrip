@@ -26,8 +26,8 @@ export default {
         body: JSON.stringify(newItinerary)
     }).then(data => data.json())
   },
-  update(editedItinerary) {
-    return fetch(`${remoteURL}/${editedItinerary.id}`, {
+  update( editedItineraryId ,editedItinerary) {
+    return fetch(`${remoteURL}/itineraries/${editedItineraryId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"

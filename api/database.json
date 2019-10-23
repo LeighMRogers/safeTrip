@@ -61,14 +61,15 @@
     {
       "itineraryName": "Taiwan Trip",
       "itineraryDate": "2019-10-25",
-      "note": "lsdfjlsdkfj",
-      "userId": "1",
+      "countrySearch": "Taiwan",
+      "note": "updated Taiwan trip again",
+      "userId": 1,
       "id": 9
     },
     {
       "itineraryName": "Japan a third time",
       "itineraryDate": "2019-10-24",
-      "note": "will you add?",
+      "note": "will it edit?",
       "userId": 1,
       "id": 10
     },
@@ -92,6 +93,14 @@
       "note": "leaving now",
       "userId": 1,
       "id": 13
+    },
+    {
+      "itineraryName": "Tour of West Africa",
+      "itineraryDate": "2019-10-24",
+      "countrySearch": "Togo, Nigeria",
+      "note": "leaving now",
+      "userId": 1,
+      "id": 14
     }
   ]
 }
