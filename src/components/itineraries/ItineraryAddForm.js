@@ -65,7 +65,7 @@ class ItinararyAddForm extends Component {
                         placeholder="Date"
                         />
                         <input
-                        type="search"
+                        type="text"
                         required
                         onChange={this.handleFieldChange}
                         id="countrySearch"
