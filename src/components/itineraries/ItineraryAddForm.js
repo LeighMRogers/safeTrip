@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ItineraryManager from '../../modules/ItineraryManager';
 import CountryManager from '../../modules/CountryManager'
+import CountryCard from '../countries/CountryCard'
+import ItineraryCountryManager from '../../modules/ItineraryCountryManager'
 
 const userObj = sessionStorage.getItem("credentials")
 class ItinararyAddForm extends Component {
@@ -55,15 +57,21 @@ class ItinararyAddForm extends Component {
             const itinerary = {
                 itineraryName: this.state.itineraryName,
                 itineraryDate: this.state.itineraryDate,
-                countryCode: this.state.countryCode.iso_alpha2,
-                country: this.state.country,
                 note: this.state.note,
                 userId: parseInt(this.props.user)
             };
             console.log("brand new itinerary obj", this.props.user)
 
-            // Create the employee and redirect user to employee list
+            // Call the itinerary manager and create new relationship object to capture country data on a new join table in database.
             ItineraryManager.post(itinerary)
+            .then((createdItinerary) => {
+                let newCountryItinerary = {
+                    itineraryId: createdItinerary.id,
+                    countryCode: this.state.countryCode.iso_alpha2,
+                    countryName: this.state.country,
+                }
+                ItineraryCountryManager.post(newCountryItinerary)
+            })
             .then(() => this.props.getData())
             .then(() => this.props.history.push("/"));
         }
@@ -98,7 +106,7 @@ class ItinararyAddForm extends Component {
                         id="countrySearch"
                         placeholder="Search Countries"
                         />
-                        <button type="button" onClick={() => this.handleCountrySearch(this.state.countrySearch)}>Find All Countries</button>
+                        <button type="button" onClick={() => this.handleCountrySearch(this.state.countrySearch)}>Add Country to Itinerary</button>
                         <input
                         type="text"
                         required

@@ -29,6 +29,7 @@ class ItineraryList extends Component {
 	};
 
 	render() {
+		console.log('itinerary list rendered')
 		return (
             <>
 			<div className='mainContainer'>

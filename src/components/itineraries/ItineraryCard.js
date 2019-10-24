@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import ItineraryManager from '../../modules/ItineraryManager'
 import CountryManager from '../../modules/CountryManager';
+import ItineraryCountryManager from '../../modules/ItineraryCountryManager';
 
 class ItineraryCard extends Component {
 
@@ -15,11 +16,16 @@ class ItineraryCard extends Component {
   }
 
   componentDidMount() {
-    CountryManager.getCountry(this.props.itinerary.countryCode)
-    .then(country => {
-      this.setState({
-        country: country.data[this.props.itinerary.countryCode].name
-      });
+    ItineraryCountryManager.getRelated(this.props.itinerary.id)
+    .then((relatedCountries) => {
+      relatedCountries.forEach(relatedCountry => {
+      CountryManager.getCountry(relatedCountry.countryCode)
+      .then(country => {
+        this.setState({
+          country: country.data[relatedCountry.countryCode].name
+          });
+        })
+      })
     })
   }
 

@@ -1,17 +1,43 @@
 import React, { Component } from "react"
 import ItineraryManager from "../../modules/ItineraryManager"
+import CountryManager from '../../modules/CountryManager'
+import ItineraryCountryManager from '../../modules/ItineraryCountryManager'
 
 class ItineraryEditForm extends Component {
     //set the initial state
     state = {
-        itineraryId: "",
         itineraryName: "",
         itineraryDate: "",
         countrySearch: "",
         note:"",
         userId: "",
+        countryCode: "",
+        country: "",
         loadingStatus: true,
     }
+
+    handleCountrySearch = searchTerm => {
+        CountryManager.getAllCountries()
+        .then((allCountries) => {
+          Object.keys(allCountries.data).forEach((key) => {
+            if (allCountries.data[key].name === searchTerm) {
+                this.setState({countryCode: allCountries.data[key].iso_alpha2})
+            }
+          })
+        })
+        .then(() => {
+            this.getCountryName();
+        })
+      }
+
+    getCountryName() {
+        CountryManager.getCountry(this.state.countryCode)
+        .then(country => {
+          this.setState({
+            country: country.data[this.state.countryCode].name
+          });
+        })
+      }
 
     handleFieldChange = evt => {
       const stateToChange = {}
@@ -36,7 +62,8 @@ class ItineraryEditForm extends Component {
       const editedItinerary = {
         itineraryName: this.state.itineraryName,
         itineraryDate: this.state.itineraryDate,
-        countrySearch: this.state.countrySearch,
+        countryCode: this.state.countryCode,
+        country: this.state.country,
         note: this.state.note,
         userId: this.state.userId
       };
@@ -53,12 +80,24 @@ class ItineraryEditForm extends Component {
             itineraryId: itinerary.id,
             itineraryName: itinerary.itineraryName,
             itineraryDate: itinerary.itineraryDate,
-            countrySearch: itinerary.countrySearch,
+            countryCode: itinerary.countryCode,
+            country: itinerary.country,
             note: itinerary.note,
             userId: itinerary.userId,
             loadingStatus: false
           });
       });
+      ItineraryCountryManager.getRelated(this.props.itineraryId)
+    .then((relatedCountries) => {
+      relatedCountries.forEach(relatedCountry => {
+      CountryManager.getCountry(relatedCountry.countryCode)
+      .then(country => {
+        this.setState({
+          country: country.data[relatedCountry.countryCode].name
+          });
+        })
+      })
+    })
     }
 
     render() {
@@ -93,9 +132,10 @@ class ItineraryEditForm extends Component {
                 className="form-control"
                 placeholder='Search for countries'
                 onChange={this.handleFieldChange}
-                id="countrySearch"
-                value={this.state.countrySearch}
+                id="country"
+                value={this.state.country}
               />
+              <button type="button" onClick={() => this.handleCountrySearch(this.state.country)}>Add Country to Itinerary</button>
 
               <input
                 type="text"
