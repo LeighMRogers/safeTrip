@@ -52,30 +52,6 @@
   ],
   "itineraries": [
     {
-      "itineraryName": "Rwanda Tour",
-      "itineraryDate": "2019-10-10",
-      "countryCode": "RW",
-      "note": "leaving now",
-      "userId": 1,
-      "id": 15
-    },
-    {
-      "itineraryName": "Middle East Tour",
-      "itineraryDate": "2019-10-24",
-      "countryCode": "JO",
-      "note": "get ready",
-      "userId": 1,
-      "id": 16
-    },
-    {
-      "itineraryName": "Madi goes to Japan",
-      "itineraryDate": "2019-10-31",
-      "countryCode": "JP",
-      "note": "yaay",
-      "userId": 1,
-      "id": 17
-    },
-    {
       "itineraryName": "Le Tour de France de Nick",
       "itineraryDate": "2019-10-24",
       "countryCode": "FR",
@@ -92,6 +68,15 @@
       "note": "shop shop shop",
       "userId": 1,
       "id": 19
+    },
+    {
+      "itineraryName": "Viva la Espana",
+      "itineraryDate": "2019-10-15",
+      "countryCode": "ES",
+      "country": "Spain",
+      "note": "please sort by date",
+      "userId": 1,
+      "id": 20
     }
   ]
 }

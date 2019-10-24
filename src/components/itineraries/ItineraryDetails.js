@@ -37,6 +37,7 @@ class ItineraryDetails extends Component {
     //get(id) from EmployeeManager and hang on to the data; put it into state
     ItineraryManager.get(this.props.itineraryId)
     .then((itinerary) => {
+      console.log("itinerary", itinerary)
       this.setState({
         itineraryName: itinerary.itineraryName,
         itineraryDate: itinerary.itineraryDate,

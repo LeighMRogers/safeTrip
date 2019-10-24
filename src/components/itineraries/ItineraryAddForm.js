@@ -98,7 +98,7 @@ class ItinararyAddForm extends Component {
                         id="countrySearch"
                         placeholder="Search Countries"
                         />
-                        <button type="button" onClick={() => this.handleCountrySearch(this.state.countrySearch)}>Find All Countries</button>
+                        <button type="button" onClick={() => this.handleCountrySearch(this.state.countrySearch)}>Add Country to Itinerary</button>
                         <input
                         type="text"
                         required
