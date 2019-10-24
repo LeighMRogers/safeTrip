@@ -12,11 +12,12 @@ class CountryCard extends Component {
     return (
       <div className="card">
         <div className="card-content">
-          <h3><span className="card-countryName"> {this.props.data.countrycode.name}</span></h3>
+          <h3>I'm a country card!</h3>
+          {/* <h3><span className="card-countryName"> {this.props.data.countrycode.name}</span></h3>
           <p>Advisory Score: {this.props.data.countrycode.advisory.score}</p>
           <p>Advisory Message:{this.props.data.countrycode.advisory.message}</p>
-          <p>Updated:{this.props.data.countrycode.advisory.updated}</p>
-          <button type="button" onClick={() => this.props.handleDelete(this.props.country.id)}>Delete Country</button>
+          <p>Updated:{this.props.data.countrycode.advisory.updated}</p> */}
+          {/* <button type="button" onClick={() => this.props.handleDelete(this.props.country.id)}>Delete Country</button> */}
         </div>
       </div>
     );

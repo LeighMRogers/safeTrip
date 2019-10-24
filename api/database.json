@@ -52,22 +52,19 @@
   ],
   "itineraries": [
     {
-      "itineraryName": "Sage goes to the mall in Cambodia",
-      "itineraryDate": "2019-10-31",
-      "countryCode": "KH",
-      "country": "Cambodia",
-      "note": "shop shop shop",
+      "itineraryName": "Madi goes to Japan",
+      "itineraryDate": "2019-10-25",
+      "note": "lofkdkd",
       "userId": 1,
-      "id": 19
-    },
+      "id": 21
+    }
+  ],
+  "itineraryCountries": [
     {
-      "itineraryName": "Viva la Espana",
-      "itineraryDate": "2019-10-15",
-      "countryCode": "ES",
-      "country": "Spain",
-      "note": "please sort by date",
-      "userId": 1,
-      "id": 20
+      "itineraryId": 21,
+      "countryCode": "JP",
+      "countryName": "Japan",
+      "id": 1
     }
   ]
 }

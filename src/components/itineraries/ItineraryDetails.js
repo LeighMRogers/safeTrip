@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ItineraryManager from '../../modules/ItineraryManager';
 import CountryManager from '../../modules/CountryManager';
+import ItineraryCountryManager from '../../modules/ItineraryCountryManager'
 
 class ItineraryDetails extends Component {
 
@@ -22,15 +23,15 @@ class ItineraryDetails extends Component {
     .then(() => this.props.history.push("/"))
   }
 
-  // getCountryName() {
-  //   CountryManager.getCountry(this.state.countryCode)
-  //   .then(country => {
-  //     console.log(country.data[this.state.countryCode].name);
-  //     this.setState({
-  //       country: country.data[this.state.countryCode].name
-  //     });
-  //   })
-  // }
+  getCountryName() {
+    CountryManager.getCountry(this.state.countryCode)
+    .then(country => {
+      console.log(country.data[this.state.countryCode].name);
+      this.setState({
+        country: country.data[this.state.countryCode].name
+      });
+    })
+  }
 
   componentDidMount(){
     console.log("ItineraryDetail: ComponentDidMount");
@@ -47,6 +48,17 @@ class ItineraryDetails extends Component {
         userId: this.state.userId,
         loadingStatus: false
       });
+    })
+    ItineraryCountryManager.getRelated(this.props.itineraryId)
+    .then((relatedCountries) => {
+      relatedCountries.forEach(relatedCountry => {
+      CountryManager.getCountry(relatedCountry.countryCode)
+      .then(country => {
+        this.setState({
+          country: country.data[relatedCountry.countryCode].name
+          });
+        })
+      })
     })
     // .then(() => {
     //   this.getCountryName();

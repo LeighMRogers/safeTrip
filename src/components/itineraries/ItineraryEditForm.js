@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import ItineraryManager from "../../modules/ItineraryManager"
 import CountryManager from '../../modules/CountryManager'
+import ItineraryCountryManager from '../../modules/ItineraryCountryManager'
 
 class ItineraryEditForm extends Component {
     //set the initial state
@@ -86,6 +87,17 @@ class ItineraryEditForm extends Component {
             loadingStatus: false
           });
       });
+      ItineraryCountryManager.getRelated(this.props.itineraryId)
+    .then((relatedCountries) => {
+      relatedCountries.forEach(relatedCountry => {
+      CountryManager.getCountry(relatedCountry.countryCode)
+      .then(country => {
+        this.setState({
+          country: country.data[relatedCountry.countryCode].name
+          });
+        })
+      })
+    })
     }
 
     render() {
