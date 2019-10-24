@@ -52,19 +52,10 @@
   ],
   "itineraries": [
     {
-      "itineraryName": "Le Tour de France de Nick",
-      "itineraryDate": "2019-10-24",
-      "countryCode": "FR",
-      "country": "France",
-      "note": "Oktoberfest",
-      "userId": 1,
-      "id": 18
-    },
-    {
-      "itineraryName": "Sage goes to the mall in Brazil",
+      "itineraryName": "Sage goes to the mall in Cambodia",
       "itineraryDate": "2019-10-31",
-      "countryCode": "BR",
-      "country": "Brazil",
+      "countryCode": "KH",
+      "country": "Cambodia",
       "note": "shop shop shop",
       "userId": 1,
       "id": 19

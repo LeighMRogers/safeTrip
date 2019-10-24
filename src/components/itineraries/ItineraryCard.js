@@ -15,8 +15,10 @@ class ItineraryCard extends Component {
   }
 
   componentDidMount() {
+    console.log("itinerary card mounted", this.props.itinerary.countryCode)
     CountryManager.getCountry(this.props.itinerary.countryCode)
     .then(country => {
+      console.log("this is country code props", this.props.itinerary.countryCode)
       this.setState({
         country: country.data[this.props.itinerary.countryCode].name
       });

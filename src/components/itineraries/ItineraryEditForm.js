@@ -20,7 +20,7 @@ class ItineraryEditForm extends Component {
         .then((allCountries) => {
           Object.keys(allCountries.data).forEach((key) => {
             if (allCountries.data[key].name === searchTerm) {
-                this.setState({countryCode: allCountries.data[key]})
+                this.setState({countryCode: allCountries.data[key].iso_alpha2})
             }
           })
         })
@@ -30,10 +30,10 @@ class ItineraryEditForm extends Component {
       }
 
     getCountryName() {
-        CountryManager.getCountry(this.state.countryCode.iso_alpha2)
+        CountryManager.getCountry(this.state.countryCode)
         .then(country => {
           this.setState({
-            country: country.data[this.state.countryCode.iso_alpha2].name
+            country: country.data[this.state.countryCode].name
           });
         })
       }
@@ -61,7 +61,7 @@ class ItineraryEditForm extends Component {
       const editedItinerary = {
         itineraryName: this.state.itineraryName,
         itineraryDate: this.state.itineraryDate,
-        countryCode: this.state.countryCode.iso_alpha2,
+        countryCode: this.state.countryCode,
         country: this.state.country,
         note: this.state.note,
         userId: this.state.userId
@@ -79,7 +79,7 @@ class ItineraryEditForm extends Component {
             itineraryId: itinerary.id,
             itineraryName: itinerary.itineraryName,
             itineraryDate: itinerary.itineraryDate,
-            countryCode: this.state.countryCode.iso_alpha2,
+            countryCode: itinerary.countryCode,
             country: itinerary.country,
             note: itinerary.note,
             userId: itinerary.userId,
@@ -120,10 +120,10 @@ class ItineraryEditForm extends Component {
                 className="form-control"
                 placeholder='Search for countries'
                 onChange={this.handleFieldChange}
-                id="countrySearch"
+                id="country"
                 value={this.state.country}
               />
-              <button type="button" onClick={() => this.handleCountrySearch(this.state.countrySearch)}>Add Country to Itinerary</button>
+              <button type="button" onClick={() => this.handleCountrySearch(this.state.country)}>Add Country to Itinerary</button>
 
               <input
                 type="text"
