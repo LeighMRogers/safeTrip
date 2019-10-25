@@ -52,19 +52,51 @@
   ],
   "itineraries": [
     {
-      "itineraryName": "Madi goes to Japan",
+      "itineraryName": "Madi goes to Cambodia",
       "itineraryDate": "2019-10-25",
-      "note": "lofkdkd",
+      "note": "will you update?",
       "userId": 1,
       "id": 21
+    },
+    {
+      "itineraryName": "Dylan Goes to Germany",
+      "itineraryDate": "2019-10-31",
+      "note": "Oktoberfest",
+      "userId": 1,
+      "id": 22
+    },
+    {
+      "itineraryName": "Cross-continent tour of the world",
+      "itineraryDate": "2019-10-31",
+      "note": "please work so I can have fun this weekend",
+      "userId": 1,
+      "id": 23
     }
   ],
   "itineraryCountries": [
     {
       "itineraryId": 21,
-      "countryCode": "JP",
-      "countryName": "Japan",
+      "countryCode": "KH",
+      "countryName": "Cambodia",
       "id": 1
+    },
+    {
+      "itineraryId": 22,
+      "countryCode": "DE",
+      "countryName": "Germany",
+      "id": 2
+    },
+    {
+      "itineraryId": 23,
+      "countryCode": "CL",
+      "countryName": "Chile",
+      "id": 3
+    },
+    {
+      "itineraryId": 23,
+      "countryCode": "ES",
+      "countryName": "Spain",
+      "id": 4
     }
   ]
 }
