@@ -58,10 +58,9 @@ class ItineraryEditForm extends Component {
 		});
 	};
 
-    updateItinerary = evt => {
+    updateItinerary = () => {
         console.log("country code state", this.state.countryCode)
         console.log("country state", this.state.country)
-      evt.preventDefault()
       this.setState({ loadingStatus: true });
       const editedItinerary = {
         itineraryName: this.state.itineraryName,
@@ -70,7 +69,7 @@ class ItineraryEditForm extends Component {
         userId: this.state.userId
       };
     //   CountryManager.post(this.state.country);
-      ItineraryManager.update(this.state.itineraryId, editedItinerary)
+      ItineraryManager.update(this.state.id, editedItinerary)
       // Call the itinerary manager and create new relationship object to capture country data on a new join table in database.
       .then(() => {
           let editedCountryItinerary = {
@@ -79,7 +78,7 @@ class ItineraryEditForm extends Component {
               countryName: this.state.country,
           }
           console.log("edited country itinerary", editedCountryItinerary)
-          ItineraryCountryManager.update(this.state.itineraryId, editedCountryItinerary)
+          ItineraryCountryManager.update(this.state.relatedCountry, editedCountryItinerary)
       })
       .then(() => this.getData())
       .then(() => this.props.history.push("/"))
@@ -106,7 +105,8 @@ class ItineraryEditForm extends Component {
        CountryManager.getCountry(relatedCountry.countryCode)
        .then(country => {
         this.setState({
-          country: country.data[relatedCountry.countryCode].name
+          country: country.data[relatedCountry.countryCode].name,
+          relatedCountry: relatedCountry.id
           });
         })
       .then(() => {
@@ -168,7 +168,9 @@ class ItineraryEditForm extends Component {
             <div className="alignRight">
               <button
                 type="button"
-                onClick={this.updateItinerary}
+                onClick={() => {
+                  {this.updateItinerary()}
+                }}
                 className="btn btn-primary"
               >Update Itinerary</button>
             </div>
