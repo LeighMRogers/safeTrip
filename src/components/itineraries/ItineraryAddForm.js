@@ -7,27 +7,29 @@ import ItineraryCountryManager from '../../modules/ItineraryCountryManager'
 const userObj = sessionStorage.getItem("credentials")
 class ItinararyAddForm extends Component {
     state = {
+        countryResults: [],
         itineraryName: "",
         itineraryDate: "",
         countrySearch: "",
         note:"",
         userId: "",
-        countryCode: "",
+        countryCode: null,
         country: "",
         loadingStatus: true,
     }
 
     handleCountrySearch = searchTerm => {
+        let newStateArray = [];
         CountryManager.getAllCountries()
         .then((allCountries) => {
           Object.keys(allCountries.data).forEach((key) => {
             if (allCountries.data[key].name === searchTerm) {
-                this.setState({countryCode: allCountries.data[key]})
+                //pushes the country object to the newStateArray array.
+                newStateArray.push(allCountries.data[key])
+                //this sets the state of the searched countries and finds its matching object in the API.
+                this.setState({countryResults: this.state.countryResults.concat(newStateArray)})
             }
           })
-        })
-        .then(() => {
-            this.getCountryName();
         })
       }
 
@@ -65,12 +67,14 @@ class ItinararyAddForm extends Component {
             // Call the itinerary manager and create new relationship object to capture country data on a new join table in database.
             ItineraryManager.post(itinerary)
             .then((createdItinerary) => {
-                let newCountryItinerary = {
-                    itineraryId: createdItinerary.id,
-                    countryCode: this.state.countryCode.iso_alpha2,
-                    countryName: this.state.country,
-                }
-                ItineraryCountryManager.post(newCountryItinerary)
+                this.state.countryResults.forEach(country => {
+                    let newCountryItinerary = {
+                        itineraryId: createdItinerary.id,
+                        countryCode: country.iso_alpha2,
+                        countryName: country.name
+                    }
+                    ItineraryCountryManager.post(newCountryItinerary)
+                })
             })
             .then(() => this.props.getData())
             .then(() => this.props.history.push("/"));
@@ -107,6 +111,15 @@ class ItinararyAddForm extends Component {
                         placeholder="Search Countries"
                         />
                         <button type="button" onClick={() => this.handleCountrySearch(this.state.countrySearch)}>Add Country to Itinerary</button>
+                        {
+                            this.state.countryResults.length > 0 ?
+                            this.state.countryResults.map(newCountry => (
+                            <CountryCard
+                                country={newCountry}
+                            />
+                            ))
+                            : null
+                        }
                         <input
                         type="text"
                         required

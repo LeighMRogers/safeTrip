@@ -68,7 +68,6 @@ class ItineraryEditForm extends Component {
         note: this.state.note,
         userId: this.state.userId
       };
-    //   CountryManager.post(this.state.country);
       ItineraryManager.update(this.state.id, editedItinerary)
       // Call the itinerary manager and create new relationship object to capture country data on a new join table in database.
       .then(() => {
@@ -152,7 +151,9 @@ class ItineraryEditForm extends Component {
                 id="country"
                 value={this.state.country}
               />
-              <button type="button" onClick={() => this.handleCountrySearch(this.state.country)}>Add Country to Itinerary</button>
+              <button type="button" onClick={() => {
+                {this.handleCountrySearch(this.state.country)}
+              }}>Add Country to Itinerary</button>
 
               <input
                 type="text"
