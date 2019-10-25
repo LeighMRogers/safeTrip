@@ -42,8 +42,6 @@ class ItineraryDetails extends Component {
       this.setState({
         itineraryName: itinerary.itineraryName,
         itineraryDate: itinerary.itineraryDate,
-        countryCode: itinerary.countryCode,
-        country: itinerary.country,
         note: itinerary.note,
         userId: this.state.userId,
         loadingStatus: false
@@ -55,7 +53,8 @@ class ItineraryDetails extends Component {
       CountryManager.getCountry(relatedCountry.countryCode)
       .then(country => {
         this.setState({
-          country: country.data[relatedCountry.countryCode].name
+          country: country.data[relatedCountry.countryCode].name,
+          countryCode: relatedCountry.countryCode
           });
         })
       })

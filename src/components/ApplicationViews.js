@@ -17,11 +17,13 @@ class ApplicationViews extends Component {
                 }} />
                 <Route exact path="/:itineraryId(\d+)" render={(props) => {
                     return <ItineraryDetails
-                        itineraryId={parseInt(props.match.params.itineraryId)} 
+                        itineraryId={parseInt(props.match.params.itineraryId)}
                         {...props} />
                 }} />
                 <Route path="/:itineraryId(\d+)/edit" render={props => {
-                    return <ItineraryEditForm {...props} />
+                    return <ItineraryEditForm
+                    {...props}
+                    getUser={this.props.getUser} />
                 }} />
             </React.Fragment>
         )
