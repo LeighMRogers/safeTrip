@@ -71,19 +71,26 @@
       "note": "please work so I can have fun this weekend",
       "userId": 1,
       "id": 23
+    },
+    {
+      "itineraryName": "Roadtrip Across Canada",
+      "itineraryDate": "2019-10-31",
+      "note": "it's gonna be awesome",
+      "userId": 1,
+      "id": 24
     }
   ],
   "itineraryCountries": [
     {
       "itineraryId": 21,
-      "countryCode": "KH",
-      "countryName": "Cambodia",
+      "countryCode": "BE",
+      "countryName": "Belgium",
       "id": 1
     },
     {
       "itineraryId": 22,
-      "countryCode": "DE",
-      "countryName": "Germany",
+      "countryCode": "AT",
+      "countryName": "Austria",
       "id": 2
     },
     {
@@ -97,6 +104,12 @@
       "countryCode": "ES",
       "countryName": "Spain",
       "id": 4
+    },
+    {
+      "itineraryId": 24,
+      "countryCode": "CA",
+      "countryName": "Canada",
+      "id": 5
     }
   ]
 }

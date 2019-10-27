@@ -21,6 +21,7 @@ class ItineraryCard extends Component {
       relatedCountries.forEach(relatedCountry => {
       CountryManager.getCountry(relatedCountry.countryCode)
       .then(country => {
+        console.log("itinerary card countryCode", relatedCountry.countryCode)
         this.setState({
           country: country.data[relatedCountry.countryCode].name
           });

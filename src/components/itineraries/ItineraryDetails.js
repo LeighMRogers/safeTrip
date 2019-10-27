@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import ItineraryManager from '../../modules/ItineraryManager';
 import CountryManager from '../../modules/CountryManager';
 import ItineraryCountryManager from '../../modules/ItineraryCountryManager'
+import CountryCard from '../countries/CountryCard'
 
 class ItineraryDetails extends Component {
 
   state = {
+      countryResults: [],
       itineraryName: "",
       itineraryDate: "",
-      countryCode: "",
+      countryCode: null,
       country: "",
       note:"",
       userId: "",
@@ -35,7 +37,7 @@ class ItineraryDetails extends Component {
 
   componentDidMount(){
     console.log("ItineraryDetail: ComponentDidMount");
-    //get(id) from EmployeeManager and hang on to the data; put it into state
+    //get(id) from ItineraryManager and hang on to the data; put it into state
     ItineraryManager.get(this.props.itineraryId)
     .then((itinerary) => {
       console.log("itinerary", itinerary)
@@ -59,9 +61,6 @@ class ItineraryDetails extends Component {
         })
       })
     })
-    // .then(() => {
-    //   this.getCountryName();
-    //   })
   }
 
   render() {
@@ -71,8 +70,17 @@ class ItineraryDetails extends Component {
             <h3><span style={{ color: 'darkslategrey' }}>{this.state.itineraryName}</span></h3>
             <p>Date: {this.state.itineraryDate}</p>
             <p>Countries: {this.state.country}</p>
-            {/* <p>Advisory Score: {this.props.data.countrycode.advisory.score}</p> */}
+            {
+              this.state.countryResults.length > 0 ?
+              this.state.countryResults.map(newCountry => (
+              <CountryCard
+                  country={newCountry}
+              />
+              ))
+              : null
+            }
             <p>Note: {this.state.note}</p>
+
             <button type="button" onClick={() => {this.props.history.push(`/${this.props.itineraryId}/edit`)}}>Edit Itinerary</button>
             <button type="button" disabled={this.state.loadingStatus} onClick={this.handleDelete}>Delete Itinerary</button>
         </div>
