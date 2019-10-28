@@ -36,28 +36,29 @@ class ItineraryDetails extends Component {
   }
 
   componentDidMount(){
+    let newStateArray = [];
+    let newState = {};
     console.log("ItineraryDetail: ComponentDidMount");
     //get(id) from ItineraryManager and hang on to the data; put it into state
     ItineraryManager.get(this.props.itineraryId)
     .then((itinerary) => {
       console.log("itinerary", itinerary)
-      this.setState({
-        itineraryName: itinerary.itineraryName,
-        itineraryDate: itinerary.itineraryDate,
-        note: itinerary.note,
-        userId: this.state.userId,
-        loadingStatus: false
-      });
-    })
-    ItineraryCountryManager.getRelated(this.props.itineraryId)
-    .then((relatedCountries) => {
-      relatedCountries.forEach(relatedCountry => {
-      CountryManager.getCountry(relatedCountry.countryCode)
-      .then(country => {
-        this.setState({
-          country: country.data[relatedCountry.countryCode].name,
-          countryCode: relatedCountry.countryCode
-          });
+        newState.itineraryName = itinerary.itineraryName
+        newState.itineraryDate = itinerary.itineraryDate
+        newState.note = itinerary.note
+        newState.userId = this.state.userId
+        newState.loadingStatus = false
+      ItineraryCountryManager.getRelated(this.props.itineraryId)
+      .then((relatedCountries) => {
+        let promiseArray = relatedCountries.map(relatedCountry => {
+        return CountryManager.getCountry(relatedCountry.countryCode)
+        .then(country => {
+          newStateArray.push(country.data[relatedCountry.countryCode]);
+          })
+        })
+        Promise.all(promiseArray).then(() => {
+          newState.countryResults = this.state.countryResults.concat(newStateArray)
+          this.setState(newState)
         })
       })
     })
@@ -69,15 +70,14 @@ class ItineraryDetails extends Component {
         <div className="card-content">
             <h3><span style={{ color: 'darkslategrey' }}>{this.state.itineraryName}</span></h3>
             <p>Date: {this.state.itineraryDate}</p>
-            <p>Countries: {this.state.country}</p>
+            {/* <p>Countries: {this.state.country}</p> */}
             {
-              this.state.countryResults.length > 0 ?
               this.state.countryResults.map(newCountry => (
               <CountryCard
                   country={newCountry}
+                  key={newCountry.iso_alpha2}
               />
               ))
-              : null
             }
             <p>Note: {this.state.note}</p>
 

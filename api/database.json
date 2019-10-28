@@ -52,7 +52,7 @@
   ],
   "itineraries": [
     {
-      "itineraryName": "Madi goes to Cambodia",
+      "itineraryName": "Madi goes to Belgium",
       "itineraryDate": "2019-10-25",
       "note": "will you update?",
       "userId": 1,
@@ -78,6 +78,20 @@
       "note": "it's gonna be awesome",
       "userId": 1,
       "id": 24
+    },
+    {
+      "itineraryName": "Wild Safari",
+      "itineraryDate": "2019-10-31",
+      "note": "See some elephants",
+      "userId": 1,
+      "id": 25
+    },
+    {
+      "itineraryName": "Inca Tour",
+      "itineraryDate": "2019-10-25",
+      "note": "lksdjfkdf",
+      "userId": 1,
+      "id": 26
     }
   ],
   "itineraryCountries": [
@@ -110,6 +124,30 @@
       "countryCode": "CA",
       "countryName": "Canada",
       "id": 5
+    },
+    {
+      "itineraryId": 25,
+      "countryCode": "BW",
+      "countryName": "Botswana",
+      "id": 6
+    },
+    {
+      "itineraryId": 25,
+      "countryCode": "ZA",
+      "countryName": "South Africa",
+      "id": 7
+    },
+    {
+      "itineraryId": 26,
+      "countryCode": "EC",
+      "countryName": "Ecuador",
+      "id": 8
+    },
+    {
+      "itineraryId": 26,
+      "countryCode": "PE",
+      "countryName": "Peru",
+      "id": 9
     }
   ]
 }

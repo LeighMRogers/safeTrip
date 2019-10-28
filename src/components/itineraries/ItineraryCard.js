@@ -7,6 +7,7 @@ import ItineraryCountryManager from '../../modules/ItineraryCountryManager';
 class ItineraryCard extends Component {
 
   state = {
+    countryResults: [],
     country: ""
   }
 
@@ -16,22 +17,24 @@ class ItineraryCard extends Component {
   }
 
   componentDidMount() {
-    ItineraryCountryManager.getRelated(this.props.itinerary.id)
-    .then((relatedCountries) => {
-      relatedCountries.forEach(relatedCountry => {
-      CountryManager.getCountry(relatedCountry.countryCode)
-      .then(country => {
-        console.log("itinerary card countryCode", relatedCountry.countryCode)
-        this.setState({
-          country: country.data[relatedCountry.countryCode].name
-          });
+    let newStateArray = [];
+    let newState = {};
+    ItineraryCountryManager.getRelated(this.props.itineraryId)
+      .then((relatedCountries) => {
+        let promiseArray = relatedCountries.map(relatedCountry => {
+        return CountryManager.getCountry(relatedCountry.countryCode)
+        .then(country => {
+          newStateArray.push(country.data[relatedCountry.countryCode]);
+          })
+        })
+        Promise.all(promiseArray).then(() => {
+          newState.countryResults = this.state.countryResults.concat(newStateArray)
+          this.setState(newState)
         })
       })
-    })
   }
 
   render() {
-    console.log("first itinerary", this.props)
     return (
       <div className="card">
         <div className="card-content">
@@ -39,7 +42,11 @@ class ItineraryCard extends Component {
           </span></h2>
           <h3>{this.props.itinerary.itineraryName}</h3>
           <p>{this.props.itinerary.itineraryDate}</p>
-          <p>{this.state.country}</p>
+          {
+              this.state.countryResults.map(newCountry => (
+                <p key={newCountry.iso_alpha2}>{newCountry.name}</p>
+              ))
+            }
           <p>{this.props.itinerary.note}</p>
 
           <Link to={`/${this.props.itineraryId}`}><button>Details</button></Link>
