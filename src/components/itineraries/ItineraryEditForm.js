@@ -92,22 +92,19 @@ class ItineraryEditForm extends Component {
     componentDidMount() {
       let newStateArray = [];
       let newState = {};
+      console.log("itinerary manager props", this.props)
       ItineraryManager.get(this.props.match.params.itineraryId)
       .then(itinerary => {
-          console.log("itinerary name changes to:", itinerary.itineraryName)
-          console.log("itinerary manager", itinerary)
-          this.setState({
-            itineraryId: itinerary.id,
-            itineraryName: itinerary.itineraryName,
-            itineraryDate: itinerary.itineraryDate,
-            note: itinerary.note,
-            userId: itinerary.userId,
-            loadingStatus: false
-          });
+        newState.itineraryName = itinerary.itineraryName
+        newState.itineraryDate = itinerary.itineraryDate
+        newState.note = itinerary.note
+        newState.userId = this.state.userId
+        newState.loadingStatus = false
       })
-      .then(() => {
-        ItineraryCountryManager.getRelated(this.props.itineraryId)
+      console.log("itinerary id params", this.props.match.params.itineraryId)
+        ItineraryCountryManager.getRelated(this.props.match.params.itineraryId)
         .then((relatedCountries) => {
+        console.log("itinerary country mgr related countries", relatedCountries)
         let promiseArray = relatedCountries.map(relatedCountry => {
         return CountryManager.getCountry(relatedCountry.countryCode)
         .then(country => {
@@ -118,7 +115,6 @@ class ItineraryEditForm extends Component {
           newState.countryResults = this.state.countryResults.concat(newStateArray)
           this.setState(newState)
         })
-      })
     })
 }
 
