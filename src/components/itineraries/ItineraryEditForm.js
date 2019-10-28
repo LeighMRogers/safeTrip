@@ -89,7 +89,8 @@ class ItineraryEditForm extends Component {
       .then(() => this.props.history.push("/"))
     }
 
-    componentDidMount() {
+    componentDidMount(e) {
+      e.preventDefault();
       let newStateArray = [];
       let newState = {};
       console.log("itinerary manager props", this.props)
@@ -177,8 +178,8 @@ class ItineraryEditForm extends Component {
             </div>
             <div className="alignRight">
               <button
-                type="button"
-                onClick={() => {
+                type="submit"
+                onSubmit={() => {
                   {this.updateItinerary()}
                 }}
                 className="btn btn-primary"
