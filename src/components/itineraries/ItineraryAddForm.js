@@ -116,6 +116,7 @@ class ItinararyAddForm extends Component {
                             this.state.countryResults.map(newCountry => (
                             <CountryCard
                                 country={newCountry}
+                                key={newCountry.countryCode}
                             />
                             ))
                             : null

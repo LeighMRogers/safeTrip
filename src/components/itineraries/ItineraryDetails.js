@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import ItineraryManager from '../../modules/ItineraryManager';
 import CountryManager from '../../modules/CountryManager';
 import ItineraryCountryManager from '../../modules/ItineraryCountryManager'
+import CountryCard from '../countries/CountryCard'
 
 class ItineraryDetails extends Component {
 
   state = {
+      countryResults: [],
       itineraryName: "",
       itineraryDate: "",
-      countryCode: "",
+      countryCode: null,
       country: "",
       note:"",
       userId: "",
@@ -34,34 +36,32 @@ class ItineraryDetails extends Component {
   }
 
   componentDidMount(){
+    let newStateArray = [];
+    let newState = {};
     console.log("ItineraryDetail: ComponentDidMount");
-    //get(id) from EmployeeManager and hang on to the data; put it into state
+    //get(id) from ItineraryManager and hang on to the data; put it into state
     ItineraryManager.get(this.props.itineraryId)
     .then((itinerary) => {
       console.log("itinerary", itinerary)
-      this.setState({
-        itineraryName: itinerary.itineraryName,
-        itineraryDate: itinerary.itineraryDate,
-        note: itinerary.note,
-        userId: this.state.userId,
-        loadingStatus: false
-      });
-    })
-    ItineraryCountryManager.getRelated(this.props.itineraryId)
-    .then((relatedCountries) => {
-      relatedCountries.forEach(relatedCountry => {
-      CountryManager.getCountry(relatedCountry.countryCode)
-      .then(country => {
-        this.setState({
-          country: country.data[relatedCountry.countryCode].name,
-          countryCode: relatedCountry.countryCode
-          });
+        newState.itineraryName = itinerary.itineraryName
+        newState.itineraryDate = itinerary.itineraryDate
+        newState.note = itinerary.note
+        newState.userId = this.state.userId
+        newState.loadingStatus = false
+      ItineraryCountryManager.getRelated(this.props.itineraryId)
+      .then((relatedCountries) => {
+        let promiseArray = relatedCountries.map(relatedCountry => {
+        return CountryManager.getCountry(relatedCountry.countryCode)
+        .then(country => {
+          newStateArray.push(country.data[relatedCountry.countryCode]);
+          })
+        })
+        Promise.all(promiseArray).then(() => {
+          newState.countryResults = this.state.countryResults.concat(newStateArray)
+          this.setState(newState)
         })
       })
     })
-    // .then(() => {
-    //   this.getCountryName();
-    //   })
   }
 
   render() {
@@ -70,9 +70,17 @@ class ItineraryDetails extends Component {
         <div className="card-content">
             <h3><span style={{ color: 'darkslategrey' }}>{this.state.itineraryName}</span></h3>
             <p>Date: {this.state.itineraryDate}</p>
-            <p>Countries: {this.state.country}</p>
-            {/* <p>Advisory Score: {this.props.data.countrycode.advisory.score}</p> */}
+            {/* <p>Countries: {this.state.country}</p> */}
+            {
+              this.state.countryResults.map(newCountry => (
+              <CountryCard
+                  country={newCountry}
+                  key={newCountry.iso_alpha2}
+              />
+              ))
+            }
             <p>Note: {this.state.note}</p>
+
             <button type="button" onClick={() => {this.props.history.push(`/${this.props.itineraryId}/edit`)}}>Edit Itinerary</button>
             <button type="button" disabled={this.state.loadingStatus} onClick={this.handleDelete}>Delete Itinerary</button>
         </div>

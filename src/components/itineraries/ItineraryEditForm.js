@@ -2,34 +2,37 @@ import React, { Component } from "react"
 import ItineraryManager from "../../modules/ItineraryManager"
 import CountryManager from '../../modules/CountryManager'
 import ItineraryCountryManager from '../../modules/ItineraryCountryManager'
+import CountryCard from '../countries/CountryCard'
 
 class ItineraryEditForm extends Component {
     //set the initial state
     state = {
+        countryResults: [],
         itineraryId: "",
         itineraryName: "",
         itineraryDate: "",
         countrySearch: "",
         note:"",
         userId: "",
-        countryCode: "",
+        countryCode: null,
         country: "",
         loadingStatus: true,
     }
 
     handleCountrySearch = searchTerm => {
+        let editedStateArray = [];
         CountryManager.getAllCountries()
         .then((allCountries) => {
           Object.keys(allCountries.data).forEach((key) => {
             if (allCountries.data[key].name === searchTerm) {
-                this.setState({countryCode: allCountries.data[key].iso_alpha2})
+                //pushes the country object to the newStateArray array.
+                editedStateArray.push(allCountries.data[key])
+                //this sets the state of the searched countries and finds its matching object in the API.
+                this.setState({countryResults: this.state.countryResults.concat(editedStateArray)})
             }
           })
         })
-        .then(() => {
-            this.getCountryName();
-        })
-      }
+    }
 
     getCountryName() {
         CountryManager.getCountry(this.state.countryCode)
@@ -60,32 +63,38 @@ class ItineraryEditForm extends Component {
 
     updateItinerary = () => {
         console.log("country code state", this.state.countryCode)
-        console.log("country state", this.state.country)
-      this.setState({ loadingStatus: true });
-      const editedItinerary = {
-        itineraryName: this.state.itineraryName,
-        itineraryDate: this.state.itineraryDate,
-        note: this.state.note,
-        userId: this.state.userId
-      };
-      ItineraryManager.update(this.state.id, editedItinerary)
+        console.log("updated itinerary name", this.state.itineraryName)
+        this.setState({ loadingStatus: true });
+        const editedItinerary = {
+          itineraryName: this.state.itineraryName,
+          itineraryDate: this.state.itineraryDate,
+          note: this.state.note,
+          userId: this.state.userId
+        };
+        console.log("country state", this.state.itineraryId)
+      ItineraryManager.update(this.state.itineraryId, editedItinerary)
       // Call the itinerary manager and create new relationship object to capture country data on a new join table in database.
       .then(() => {
+        this.state.countryResults.forEach(country => {
           let editedCountryItinerary = {
-              itineraryId: this.state.itineraryId,
-              countryCode: this.state.countryCode,
-              countryName: this.state.country,
+            itineraryId: this.state.itineraryId,
+            countryCode: country.iso_alpha2,
+            countryName: country.name,
           }
           console.log("edited country itinerary", editedCountryItinerary)
           ItineraryCountryManager.update(this.state.relatedCountry, editedCountryItinerary)
+        })
       })
       .then(() => this.getData())
       .then(() => this.props.history.push("/"))
     }
 
     componentDidMount() {
+      let newStateArray = [];
+      let newState = {};
       ItineraryManager.get(this.props.match.params.itineraryId)
       .then(itinerary => {
+          console.log("itinerary name changes to:", itinerary.itineraryName)
           console.log("itinerary manager", itinerary)
           this.setState({
             itineraryId: itinerary.id,
@@ -97,24 +106,21 @@ class ItineraryEditForm extends Component {
           });
       })
       .then(() => {
-        ItineraryCountryManager.getRelated(this.state.itineraryId)
+        ItineraryCountryManager.getRelated(this.props.itineraryId)
         .then((relatedCountries) => {
-            console.log("do you run?", this.state.itineraryId)
-       relatedCountries.forEach(relatedCountry => {
-       CountryManager.getCountry(relatedCountry.countryCode)
-       .then(country => {
-        this.setState({
-          country: country.data[relatedCountry.countryCode].name,
-          relatedCountry: relatedCountry.id
-          });
+        let promiseArray = relatedCountries.map(relatedCountry => {
+        return CountryManager.getCountry(relatedCountry.countryCode)
+        .then(country => {
+          newStateArray.push(country.data[relatedCountry.countryCode]);
+          })
         })
-      .then(() => {
-          console.log("this.state.country", this.state.country)
-      })
+        Promise.all(promiseArray).then(() => {
+          newState.countryResults = this.state.countryResults.concat(newStateArray)
+          this.setState(newState)
+        })
       })
     })
-    })
-    }
+}
 
     render() {
       return (
@@ -154,7 +160,14 @@ class ItineraryEditForm extends Component {
               <button type="button" onClick={() => {
                 {this.handleCountrySearch(this.state.country)}
               }}>Add Country to Itinerary</button>
-
+              {
+              this.state.countryResults.map(newCountry => (
+                <CountryCard
+                    country={newCountry}
+                    key={newCountry.iso_alpha2}
+                />
+                ))
+              }
               <input
                 type="text"
                 required
@@ -180,6 +193,6 @@ class ItineraryEditForm extends Component {
         </>
       );
     }
-}
+  }
 
 export default ItineraryEditForm

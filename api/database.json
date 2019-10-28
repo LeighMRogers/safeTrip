@@ -52,7 +52,7 @@
   ],
   "itineraries": [
     {
-      "itineraryName": "Madi goes to Cambodia",
+      "itineraryName": "Madi goes to Belgium",
       "itineraryDate": "2019-10-25",
       "note": "will you update?",
       "userId": 1,
@@ -71,19 +71,40 @@
       "note": "please work so I can have fun this weekend",
       "userId": 1,
       "id": 23
+    },
+    {
+      "itineraryName": "Roadtrip Across Canada",
+      "itineraryDate": "2019-10-31",
+      "note": "it's gonna be awesome",
+      "userId": 1,
+      "id": 24
+    },
+    {
+      "itineraryName": "Wild Safari",
+      "itineraryDate": "2019-10-31",
+      "note": "See some elephants",
+      "userId": 1,
+      "id": 25
+    },
+    {
+      "itineraryName": "Inca Tour",
+      "itineraryDate": "2019-10-25",
+      "note": "lksdjfkdf",
+      "userId": 1,
+      "id": 26
     }
   ],
   "itineraryCountries": [
     {
       "itineraryId": 21,
-      "countryCode": "KH",
-      "countryName": "Cambodia",
+      "countryCode": "BE",
+      "countryName": "Belgium",
       "id": 1
     },
     {
       "itineraryId": 22,
-      "countryCode": "DE",
-      "countryName": "Germany",
+      "countryCode": "AT",
+      "countryName": "Austria",
       "id": 2
     },
     {
@@ -97,6 +118,36 @@
       "countryCode": "ES",
       "countryName": "Spain",
       "id": 4
+    },
+    {
+      "itineraryId": 24,
+      "countryCode": "CA",
+      "countryName": "Canada",
+      "id": 5
+    },
+    {
+      "itineraryId": 25,
+      "countryCode": "BW",
+      "countryName": "Botswana",
+      "id": 6
+    },
+    {
+      "itineraryId": 25,
+      "countryCode": "ZA",
+      "countryName": "South Africa",
+      "id": 7
+    },
+    {
+      "itineraryId": 26,
+      "countryCode": "EC",
+      "countryName": "Ecuador",
+      "id": 8
+    },
+    {
+      "itineraryId": 26,
+      "countryCode": "PE",
+      "countryName": "Peru",
+      "id": 9
     }
   ]
 }

@@ -3,8 +3,8 @@ import CountryManager from '../../modules/CountryManager'
 
 class CountryCard extends Component {
 
-  handleDelete = id => {
-    CountryManager.delete(id)
+  handleDelete = () => {
+    CountryManager.delete(this.props.country.iso_alpha2)
     .then(() => this.props.getData());
   }
 
