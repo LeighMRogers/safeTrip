@@ -59,13 +59,6 @@
       "id": 21
     },
     {
-      "itineraryName": "Dylan Goes to Germany",
-      "itineraryDate": "2019-10-31",
-      "note": "Oktoberfest",
-      "userId": 1,
-      "id": 22
-    },
-    {
       "itineraryName": "Cross-continent tour of the world",
       "itineraryDate": "2019-10-31",
       "note": "please work so I can have fun this weekend",
@@ -73,10 +66,10 @@
       "id": 23
     },
     {
-      "itineraryName": "Roadtrip Across Canada",
+      "itineraryName": "North America Tour",
       "itineraryDate": "2019-10-31",
       "note": "it's gonna be awesome",
-      "userId": 1,
+      "userId": "1",
       "id": 24
     },
     {
@@ -92,6 +85,20 @@
       "note": "lksdjfkdf",
       "userId": 1,
       "id": 26
+    },
+    {
+      "itineraryName": "Leigh's trip to Portugal",
+      "itineraryDate": "2019-11-28",
+      "note": "next year",
+      "userId": 1,
+      "id": 27
+    },
+    {
+      "itineraryName": "Taylor wants to go to Japan",
+      "itineraryDate": "2019-10-24",
+      "note": "Specifically Yokohama",
+      "userId": 1,
+      "id": 28
     }
   ],
   "itineraryCountries": [
@@ -100,12 +107,6 @@
       "countryCode": "BE",
       "countryName": "Belgium",
       "id": 1
-    },
-    {
-      "itineraryId": 22,
-      "countryCode": "AT",
-      "countryName": "Austria",
-      "id": 2
     },
     {
       "itineraryId": 23,
@@ -148,6 +149,30 @@
       "countryCode": "PE",
       "countryName": "Peru",
       "id": 9
+    },
+    {
+      "itineraryId": 27,
+      "countryCode": "PT",
+      "countryName": "Portugal",
+      "id": 10
+    },
+    {
+      "itineraryId": 28,
+      "countryCode": "JP",
+      "countryName": "Japan",
+      "id": 11
+    },
+    {
+      "itineraryId": "24",
+      "countryCode": "US",
+      "countryName": "United States",
+      "id": 12
+    },
+    {
+      "itineraryId": "24",
+      "countryCode": "MX",
+      "countryName": "Mexico",
+      "id": 13
     }
   ]
 }

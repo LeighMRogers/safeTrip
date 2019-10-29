@@ -78,6 +78,10 @@ class ItinararyAddForm extends Component {
             })
             .then(() => this.props.getData())
             .then(() => this.props.history.push("/"));
+            document.querySelector("#itineraryName").value = "";
+            document.querySelector("#itineraryDate").value = "";
+            document.querySelector("#countrySearch").value = "";
+            document.querySelector("#note").value = "";
         }
     };
 

@@ -17,14 +17,12 @@ export default {
         }).then(data => data.json())
     },
     getRelated(id) {
-        console.log("itineary country Id", id)
         return fetch(`${remoteURL}/itineraryCountries?itineraryId=${id}`)
         .then(data => data.json())
     },
     update(id, editedItinerary) {
-        console.log("edited itinerary", editedItinerary)
         return fetch(`${remoteURL}/itineraryCountries/${id}`, {
-          method: "PATCH",
+          method: "PUT",
           headers: {
             "Content-Type": "application/json"
           },
