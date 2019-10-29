@@ -13,11 +13,13 @@ class ItineraryEditForm extends Component {
         itineraryName: "",
         itineraryDate: "",
         countrySearch: "",
+        relatedCountryId: "",
         note:"",
         userId: "",
         countryCode: null,
         country: "",
         loadingStatus: true,
+        formType: true
     }
 
     handleCountrySearch = searchTerm => {
@@ -99,12 +101,14 @@ class ItineraryEditForm extends Component {
         newState.note = itinerary.note
         newState.userId = this.props.getUser()
         newState.loadingStatus = false
+
       })
         ItineraryCountryManager.getRelated(this.props.match.params.itineraryId)
         .then((relatedCountries) => {
         let promiseArray = relatedCountries.map(relatedCountry => {
         return CountryManager.getCountry(relatedCountry.countryCode)
         .then(country => {
+          this.setState({relatedCountryId: relatedCountry.id})
           newStateArray.push(country.data[relatedCountry.countryCode]);
           })
         })
@@ -162,8 +166,11 @@ class ItineraryEditForm extends Component {
               {
               this.state.countryResults.map(newCountry => (
                 <CountryCard
+                    formType={this.state.formType}
                     country={newCountry}
                     key={newCountry.iso_alpha2}
+                    relatedCountryId={this.state.relatedCountryId}
+                    getData={this.getData}
                 />
                 ))
               }

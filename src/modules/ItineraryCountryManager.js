@@ -2,7 +2,7 @@ const remoteURL = " http://localhost:8088"
 
 export default {
     delete(id) {
-        return fetch(`${remoteURL}/${id}`, {
+        return fetch(`${remoteURL}/itineraryCountries/${id}`, {
             method: "DELETE"
         })
         .then(result => result.json())

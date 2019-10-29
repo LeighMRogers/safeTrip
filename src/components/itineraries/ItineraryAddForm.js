@@ -13,9 +13,11 @@ class ItinararyAddForm extends Component {
         countrySearch: "",
         note:"",
         userId: "",
+        relatedCountryId: "",
         countryCode: null,
         country: "",
         loadingStatus: true,
+        formType: false
     }
 
     handleCountrySearch = searchTerm => {
@@ -119,6 +121,7 @@ class ItinararyAddForm extends Component {
                             this.state.countryResults.length > 0 ?
                             this.state.countryResults.map(newCountry => (
                             <CountryCard
+                                formType={this.state.formType}
                                 country={newCountry}
                                 key={newCountry.countryCode}
                             />

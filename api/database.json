@@ -87,17 +87,17 @@
       "id": 26
     },
     {
-      "itineraryName": "Leigh's trip to Portugal",
-      "itineraryDate": "2019-11-28",
-      "note": "next year",
-      "userId": 1,
+      "itineraryName": "Leigh's trip to Portugal and Spain",
+      "itineraryDate": "2019-12-09",
+      "note": "next week",
+      "userId": "1",
       "id": 27
     },
     {
-      "itineraryName": "Taylor wants to go to Japan",
-      "itineraryDate": "2019-10-24",
-      "note": "Specifically Yokohama",
-      "userId": 1,
+      "itineraryName": "Mo is going to France",
+      "itineraryDate": "2019-10-23",
+      "note": "Bonjour Mo!",
+      "userId": "1",
       "id": 28
     }
   ],
@@ -157,22 +157,28 @@
       "id": 10
     },
     {
-      "itineraryId": 28,
-      "countryCode": "JP",
-      "countryName": "Japan",
-      "id": 11
-    },
-    {
-      "itineraryId": "24",
-      "countryCode": "US",
-      "countryName": "United States",
-      "id": 12
-    },
-    {
       "itineraryId": "24",
       "countryCode": "MX",
       "countryName": "Mexico",
       "id": 13
+    },
+    {
+      "itineraryId": 28,
+      "countryCode": "FR",
+      "countryName": "France",
+      "id": 14
+    },
+    {
+      "itineraryId": "28",
+      "countryCode": "PT",
+      "countryName": "Portugal",
+      "id": 15
+    },
+    {
+      "itineraryId": "27",
+      "countryCode": "ES",
+      "countryName": "Spain",
+      "id": 16
     }
   ]
 }
