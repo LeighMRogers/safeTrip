@@ -18,7 +18,6 @@ class ItineraryDetails extends Component {
   }
 
   handleDelete = () => {
-    console.log(this.props.itineraryId)
     //invoke the delete function in ItineraryManger and re-direct to the itinerary list.
     this.setState({loadingStatus: true})
     ItineraryManager.delete(this.props.itineraryId)
@@ -28,7 +27,6 @@ class ItineraryDetails extends Component {
   getCountryName() {
     CountryManager.getCountry(this.state.countryCode)
     .then(country => {
-      console.log(country.data[this.state.countryCode].name);
       this.setState({
         country: country.data[this.state.countryCode].name
       });
@@ -38,11 +36,9 @@ class ItineraryDetails extends Component {
   componentDidMount(){
     let newStateArray = [];
     let newState = {};
-    console.log("ItineraryDetail: ComponentDidMount");
     //get(id) from ItineraryManager and hang on to the data; put it into state
     ItineraryManager.get(this.props.itineraryId)
     .then((itinerary) => {
-      console.log("itinerary", itinerary)
         newState.itineraryName = itinerary.itineraryName
         newState.itineraryDate = itinerary.itineraryDate
         newState.note = itinerary.note
@@ -51,6 +47,7 @@ class ItineraryDetails extends Component {
       ItineraryCountryManager.getRelated(this.props.itineraryId)
       .then((relatedCountries) => {
         let promiseArray = relatedCountries.map(relatedCountry => {
+          console.log("related countries", relatedCountry.id)
         return CountryManager.getCountry(relatedCountry.countryCode)
         .then(country => {
           newStateArray.push(country.data[relatedCountry.countryCode]);
@@ -70,7 +67,6 @@ class ItineraryDetails extends Component {
         <div className="card-content">
             <h3><span style={{ color: 'darkslategrey' }}>{this.state.itineraryName}</span></h3>
             <p>Date: {this.state.itineraryDate}</p>
-            {/* <p>Countries: {this.state.country}</p> */}
             {
               this.state.countryResults.map(newCountry => (
               <CountryCard

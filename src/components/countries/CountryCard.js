@@ -1,14 +1,22 @@
 import React, { Component } from 'react';
-import CountryManager from '../../modules/CountryManager'
+import ItineraryCountryManager from '../../modules/ItineraryCountryManager';
+import ItineraryEditForm from '../itineraries/ItineraryEditForm';
 
 class CountryCard extends Component {
 
+  state = {
+    formType: ""
+  }
+  componentDidMount = () => {
+    this.setState({formType: this.props.formType})
+  }
   handleDelete = () => {
-    CountryManager.delete(this.props.country.iso_alpha2)
+    ItineraryCountryManager.delete(this.props.relatedCountryId)
     .then(() => this.props.getData());
   }
 
   render() {
+  console.log("form type", this.props.formType)
     return (
       <div className="card">
         <div className="card-content">
@@ -20,8 +28,10 @@ class CountryCard extends Component {
             : <p>There is currently not an advisory message for {this.props.country.name}</p>
           }
           <p>Last Updated:{this.props.country.advisory.updated}</p>
-
-          <button type="button" onClick={() => this.props.handleDelete(this.props.country.iso_alpha2)}>Delete Country</button>
+          { this.state.formType ?
+            <button type="button" onClick={() => this.handleDelete()}>Delete Country</button>
+            : ""
+          }
         </div>
       </div>
     );
