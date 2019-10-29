@@ -24,7 +24,7 @@ export default {
     update(id, editedItinerary) {
         console.log("edited itinerary", editedItinerary)
         return fetch(`${remoteURL}/itineraryCountries/${id}`, {
-          method: "PATCH",
+          method: "PUT",
           headers: {
             "Content-Type": "application/json"
           },

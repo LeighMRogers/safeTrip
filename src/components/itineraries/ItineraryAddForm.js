@@ -78,6 +78,10 @@ class ItinararyAddForm extends Component {
             })
             .then(() => this.props.getData())
             .then(() => this.props.history.push("/"));
+            document.querySelector("#itineraryName").value = "";
+            document.querySelector("#itineraryDate").value = "";
+            document.querySelector("#countrySearch").value = "";
+            document.querySelector("#note").value = "";
         }
     };
 
@@ -110,7 +114,7 @@ class ItinararyAddForm extends Component {
                         id="countrySearch"
                         placeholder="Search Countries"
                         />
-                        <button type="submit" onSubmit={() => this.handleCountrySearch(this.state.countrySearch)}>Add Country to Itinerary</button>
+                        <button type="button" onClick={() => this.handleCountrySearch(this.state.countrySearch)}>Add Country to Itinerary</button>
                         {
                             this.state.countryResults.length > 0 ?
                             this.state.countryResults.map(newCountry => (
@@ -131,8 +135,8 @@ class ItinararyAddForm extends Component {
                     </div>
                     <div className="alignRight">
                         <button
-                        type="submit"
-                        onSubmit={this.addNewItinerary}
+                        type="button"
+                        onClick={this.addNewItinerary}
                         >Add Itinerary</button>
                     </div>
                 </fieldset>
