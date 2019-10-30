@@ -167,7 +167,10 @@ class ItineraryEditForm extends Component {
                   id="country"
                   value={this.state.country}
               />
-              <button type="button" onClick={() => {{this.handleCountrySearch(this.state.country)}}}>Add Country to Itinerary</button>
+              <button
+                  className="btn btn-primary"
+                  type="button"
+                  onClick={() => {{this.handleCountrySearch(this.state.country)}}}>Add Country to Itinerary</button>
               {
               this.state.searchResults.map(newCountry => (
                 <CountryCard

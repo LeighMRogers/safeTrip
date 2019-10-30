@@ -28,23 +28,24 @@ class ItineraryList extends Component {
 		return (
             <>
 			<div className='mainContainer'>
-				<div className='sectionHeader'>
-					<h1>Itineraries</h1>
-
+				<section className='addForm'>
+					<h1>My Itineraries</h1>
                     <ItineraryAddForm
                         getData={this.getData}
 						{...this.props}
 						user={this.state.user} />
-				</div>
-				{this.state.itineraries.map(itinerary => (
-					<ItineraryCard
-                        key={itinerary.id}
-                        itineraryId={itinerary.id}
-						itinerary={itinerary}
-						{...this.props}
-						getData={this.getData}
-					/>
-				))}
+				</section>
+				<section>
+					{this.state.itineraries.map(itinerary => (
+						<ItineraryCard
+							key={itinerary.id}
+							itineraryId={itinerary.id}
+							itinerary={itinerary}
+							{...this.props}
+							getData={this.getData}
+						/>
+					))}
+				</section>
 			</div>
             </>
 		);

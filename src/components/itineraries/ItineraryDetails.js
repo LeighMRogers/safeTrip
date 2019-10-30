@@ -79,8 +79,15 @@ class ItineraryDetails extends Component {
             }
             <p>Note: {this.state.note}</p>
 
-            <button type="button" onClick={() => {this.props.history.push(`/${this.props.itineraryId}/edit`)}}>Edit Itinerary</button>
-            <button type="button" disabled={this.state.loadingStatus} onClick={this.handleDelete}>Delete Itinerary</button>
+            <button
+              className="btn btn-primary"
+              type="button"
+              onClick={() => {this.props.history.push(`/${this.props.itineraryId}/edit`)}}>Edit Itinerary</button>
+            <button
+              className="btn btn-primary"
+              type="button"
+              disabled={this.state.loadingStatus}
+              onClick={this.handleDelete}>Delete Itinerary</button>
         </div>
       </div>
     );
