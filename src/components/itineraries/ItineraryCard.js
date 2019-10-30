@@ -41,7 +41,7 @@ class ItineraryCard extends Component {
           <h2><span className="card-countryName"> Itinerary Card
           </span></h2>
           <h3>{this.props.itinerary.itineraryName}</h3>
-          <p>{this.props.itinerary.itineraryDate}</p>
+          <p>{this.props.itinerary.startDate} to {this.props.itinerary.endDate}</p>
           {
               this.state.countryResults.map(newCountry => (
                 <p key={newCountry.iso_alpha2}>{newCountry.name}</p>

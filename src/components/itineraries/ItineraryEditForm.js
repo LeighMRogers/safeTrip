@@ -3,6 +3,8 @@ import ItineraryManager from "../../modules/ItineraryManager"
 import CountryManager from '../../modules/CountryManager'
 import ItineraryCountryManager from '../../modules/ItineraryCountryManager'
 import CountryCard from '../countries/CountryCard'
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 class ItineraryEditForm extends Component {
     //set the initial state
@@ -11,7 +13,8 @@ class ItineraryEditForm extends Component {
         searchResults: [],
         itineraryId: "",
         itineraryName: "",
-        itineraryDate: "",
+        startDate: "",
+        endDate: "",
         countrySearch: "",
         relatedCountryId: "",
         note:"",
@@ -69,7 +72,8 @@ class ItineraryEditForm extends Component {
       evt.preventDefault();
         const editedItinerary = {
           itineraryName: this.state.itineraryName,
-          itineraryDate: this.state.itineraryDate,
+          startDate: this.state.startDate,
+          endDate: this.state.endDate,
           note: this.state.note,
           userId: this.state.userId
         };
@@ -97,7 +101,8 @@ class ItineraryEditForm extends Component {
       ItineraryManager.get(this.props.match.params.itineraryId)
       .then(itinerary => {
         newState.itineraryName = itinerary.itineraryName
-        newState.itineraryDate = itinerary.itineraryDate
+        newState.startDate = itinerary.startDate
+        newState.endDate = itinerary.endDate
         newState.note = itinerary.note
         newState.userId = this.props.getUser()
         newState.loadingStatus = false
@@ -134,25 +139,33 @@ class ItineraryEditForm extends Component {
                 id="itineraryName"
                 value={this.state.itineraryName}
               />
-
               <input
-                type="date"
-                required
-                className="form-control"
-                placeholder='Date'
-                onChange={this.handleFieldChange}
-                id="itineraryDate"
-                value={this.state.itineraryDate}
+                  type="date"
+                  className="form-control"
+                  required
+                  onChange={this.handleFieldChange}
+                  id="startDate"
+                  placeholder="Select start range"
+                  value={this.state.startDate}
+
               />
-
               <input
-                type="text"
-                required
-                className="form-control"
-                placeholder='Search for countries'
-                onChange={this.handleFieldChange}
-                id="country"
-                value={this.state.country}
+                  type="date"
+                  className="form-control"
+                  required
+                  onChange={this.handleFieldChange}
+                  id="endDate"
+                  placeholder="Select end date"
+                  value={this.state.endDate}
+              />
+              <input
+                  type="text"
+                  required
+                  className="form-control"
+                  placeholder='Search for countries'
+                  onChange={this.handleFieldChange}
+                  id="country"
+                  value={this.state.country}
               />
               <button type="button" onClick={() => {{this.handleCountrySearch(this.state.country)}}}>Add Country to Itinerary</button>
               {

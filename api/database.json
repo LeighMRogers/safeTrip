@@ -52,133 +52,20 @@
   ],
   "itineraries": [
     {
-      "itineraryName": "Madi goes to Belgium",
-      "itineraryDate": "2019-10-25",
-      "note": "will you update?",
+      "itineraryName": "Rogers Family to Portugal",
+      "startDate": "2019-12-22",
+      "endDate": "2019-12-31",
+      "note": "Christmas I wish",
       "userId": 1,
-      "id": 21
-    },
-    {
-      "itineraryName": "Cross-continent tour of the world",
-      "itineraryDate": "2019-10-31",
-      "note": "please work so I can have fun this weekend",
-      "userId": 1,
-      "id": 23
-    },
-    {
-      "itineraryName": "North America Tour",
-      "itineraryDate": "2019-10-31",
-      "note": "it's gonna be awesome",
-      "userId": "1",
-      "id": 24
-    },
-    {
-      "itineraryName": "Wild Safari",
-      "itineraryDate": "2019-10-31",
-      "note": "See some elephants",
-      "userId": 1,
-      "id": 25
-    },
-    {
-      "itineraryName": "Inca Tour",
-      "itineraryDate": "2019-10-25",
-      "note": "lksdjfkdf",
-      "userId": 1,
-      "id": 26
-    },
-    {
-      "itineraryName": "Leigh's trip to Portugal and Spain",
-      "itineraryDate": "2019-12-09",
-      "note": "next week",
-      "userId": "1",
-      "id": 27
-    },
-    {
-      "itineraryName": "Mo is going to France",
-      "itineraryDate": "2019-10-23",
-      "note": "Bonjour Mo!",
-      "userId": "1",
-      "id": 28
+      "id": 1
     }
   ],
   "itineraryCountries": [
     {
-      "itineraryId": 21,
-      "countryCode": "BE",
-      "countryName": "Belgium",
-      "id": 1
-    },
-    {
-      "itineraryId": 23,
-      "countryCode": "CL",
-      "countryName": "Chile",
-      "id": 3
-    },
-    {
-      "itineraryId": 23,
-      "countryCode": "ES",
-      "countryName": "Spain",
-      "id": 4
-    },
-    {
-      "itineraryId": 24,
-      "countryCode": "CA",
-      "countryName": "Canada",
-      "id": 5
-    },
-    {
-      "itineraryId": 25,
-      "countryCode": "BW",
-      "countryName": "Botswana",
-      "id": 6
-    },
-    {
-      "itineraryId": 25,
-      "countryCode": "ZA",
-      "countryName": "South Africa",
-      "id": 7
-    },
-    {
-      "itineraryId": 26,
-      "countryCode": "EC",
-      "countryName": "Ecuador",
-      "id": 8
-    },
-    {
-      "itineraryId": 26,
-      "countryCode": "PE",
-      "countryName": "Peru",
-      "id": 9
-    },
-    {
-      "itineraryId": 27,
+      "itineraryId": 1,
       "countryCode": "PT",
       "countryName": "Portugal",
-      "id": 10
-    },
-    {
-      "itineraryId": "24",
-      "countryCode": "MX",
-      "countryName": "Mexico",
-      "id": 13
-    },
-    {
-      "itineraryId": 28,
-      "countryCode": "FR",
-      "countryName": "France",
-      "id": 14
-    },
-    {
-      "itineraryId": "28",
-      "countryCode": "PT",
-      "countryName": "Portugal",
-      "id": 15
-    },
-    {
-      "itineraryId": "27",
-      "countryCode": "ES",
-      "countryName": "Spain",
-      "id": 16
+      "id": 17
     }
   ]
 }
