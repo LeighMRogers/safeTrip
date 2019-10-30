@@ -3,13 +3,16 @@ import ItineraryManager from '../../modules/ItineraryManager';
 import CountryManager from '../../modules/CountryManager'
 import CountryCard from '../countries/CountryCard'
 import ItineraryCountryManager from '../../modules/ItineraryCountryManager'
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const userObj = sessionStorage.getItem("credentials")
 class ItinararyAddForm extends Component {
     state = {
         countryResults: [],
         itineraryName: "",
-        itineraryDate: "",
+        startDate: "",
+        endDate: "",
         countrySearch: "",
         note:"",
         userId: "",
@@ -54,13 +57,14 @@ class ItinararyAddForm extends Component {
     */
     addNewItinerary = evt => {
         evt.preventDefault();
-        if (this.state.itineraryName === "" || this.state.itineraryDate === "") {
-            window.alert("Please input an itinerary name and date");
+        if (this.state.itineraryName === "" || this.state.startDate === "" || this.state.endDate === "") {
+            window.alert("Please input an itinerary name and dates");
         } else {
             this.setState({ loadingStatus: true });
             const itinerary = {
                 itineraryName: this.state.itineraryName,
-                itineraryDate: this.state.itineraryDate,
+                startDate: this.state.startDate,
+                endDate: this.state.endDate,
                 note: this.state.note,
                 userId: parseInt(this.props.user)
             };
@@ -81,7 +85,8 @@ class ItinararyAddForm extends Component {
             .then(() => this.props.getData())
             .then(() => this.props.history.push("/"));
             document.querySelector("#itineraryName").value = "";
-            document.querySelector("#itineraryDate").value = "";
+            document.querySelector("#startDate").value = "";
+            document.querySelector("#endDate").value = "";
             document.querySelector("#countrySearch").value = "";
             document.querySelector("#note").value = "";
         }
@@ -96,25 +101,32 @@ class ItinararyAddForm extends Component {
                 <fieldset>
                     <div className="formgrid">
                         <input
-                        type="text"
-                        required
-                        onChange={this.handleFieldChange}
-                        id="itineraryName"
-                        placeholder="Itinerary name"
+                            type="text"
+                            required
+                            onChange={this.handleFieldChange}
+                            id="itineraryName"
+                            placeholder="Itinerary name"
                         />
                         <input
-                        type="date"
-                        required
-                        onChange={this.handleFieldChange}
-                        id="itineraryDate"
-                        placeholder="Date"
+                            type="date"
+                            required
+                            onChange={this.handleFieldChange}
+                            id="startDate"
+                            placeholder="Select start range"
                         />
                         <input
-                        type="text"
-                        required
-                        onChange={this.handleFieldChange}
-                        id="countrySearch"
-                        placeholder="Search Countries"
+                            type="date"
+                            required
+                            onChange={this.handleFieldChange}
+                            id="endDate"
+                            placeholder="Select end date"
+                        />
+                        <input
+                            type="text"
+                            required
+                            onChange={this.handleFieldChange}
+                            id="countrySearch"
+                            placeholder="Search Countries"
                         />
                         <button type="button" onClick={() => this.handleCountrySearch(this.state.countrySearch)}>Add Country to Itinerary</button>
                         {
@@ -129,11 +141,11 @@ class ItinararyAddForm extends Component {
                             : null
                         }
                         <input
-                        type="text"
-                        required
-                        onChange={this.handleFieldChange}
-                        id="note"
-                        placeholder="Add an itinerary note"
+                            type="text"
+                            required
+                            onChange={this.handleFieldChange}
+                            id="note"
+                            placeholder="Add an itinerary note"
                         />
                     </div>
                     <div className="alignRight">

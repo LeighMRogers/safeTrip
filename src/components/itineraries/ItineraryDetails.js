@@ -9,7 +9,8 @@ class ItineraryDetails extends Component {
   state = {
       countryResults: [],
       itineraryName: "",
-      itineraryDate: "",
+      startDate: "",
+      endDate: "",
       countryCode: null,
       country: "",
       note:"",
@@ -40,7 +41,8 @@ class ItineraryDetails extends Component {
     ItineraryManager.get(this.props.itineraryId)
     .then((itinerary) => {
         newState.itineraryName = itinerary.itineraryName
-        newState.itineraryDate = itinerary.itineraryDate
+        newState.startDate = itinerary.startDate
+        newState.endDate = itinerary.endDate
         newState.note = itinerary.note
         newState.userId = this.state.userId
         newState.loadingStatus = false
@@ -66,7 +68,7 @@ class ItineraryDetails extends Component {
       <div className="card">
         <div className="card-content">
             <h3><span style={{ color: 'darkslategrey' }}>{this.state.itineraryName}</span></h3>
-            <p>Date: {this.state.itineraryDate}</p>
+            <p>Date: {this.state.startDate} to {this.state.endDate}</p>
             {
               this.state.countryResults.map(newCountry => (
               <CountryCard
