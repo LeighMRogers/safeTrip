@@ -59,7 +59,7 @@ class Login extends Component {
                         <input onChange={this.handleFieldChange} type="password"
                             required="" type="password" name="password" id="password"
                             placeholder="Password" />
-                    <button className="submit" type="submit">Log In</button>
+                    <button className="btn btn-primary" type="submit">Log In</button>
                 </form>
              </div>
             </>

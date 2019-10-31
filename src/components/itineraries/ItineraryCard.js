@@ -49,7 +49,8 @@ class ItineraryCard extends Component {
             }
           <p>{this.props.itinerary.note}</p>
 
-          <Link to={`/${this.props.itineraryId}`}><button>Details</button></Link>
+          <Link to={`/${this.props.itineraryId}`}>
+            <button type="button" className="btn btn-primary">Details</button></Link>
         </div>
       </div>
     );

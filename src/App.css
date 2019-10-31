@@ -1,22 +1,27 @@
-.App {
-  text-align: center;
+/* Nav css */
+
+header {
+  background-color: #94cef2;
+  border-bottom: darkslateblue 5px;
 }
 
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+nav {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: row;
+  margin-bottom: 0;
+  color: #94cef2 !important;
 }
 
-.App-link {
-  color: #09d3ac;
+.navbar {
+  background-color: #94cef2;
+}
+
+a,
+a:link,
+a:visited {
+    color: #8C566A;
+    text-decoration: none !important;
+}
+.navbar-brand {
+   color: black !important;
 }

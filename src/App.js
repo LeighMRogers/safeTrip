@@ -4,6 +4,7 @@ import NavBar from "./components/nav/NavBar";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import About from "./components/about/About"
+import "./App.css"
 
 class App extends Component {
   state = {

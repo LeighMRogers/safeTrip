@@ -3,8 +3,7 @@ import ItineraryManager from '../../modules/ItineraryManager';
 import CountryManager from '../../modules/CountryManager'
 import CountryCard from '../countries/CountryCard'
 import ItineraryCountryManager from '../../modules/ItineraryCountryManager'
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+
 
 const userObj = sessionStorage.getItem("credentials")
 class ItinararyAddForm extends Component {
@@ -101,20 +100,25 @@ class ItinararyAddForm extends Component {
                 <fieldset>
                     <div className="formgrid">
                         <input
+                            className="form-control"
                             type="text"
                             required
                             onChange={this.handleFieldChange}
                             id="itineraryName"
                             placeholder="Itinerary name"
                         />
+                        <label>Start Date</label>
                         <input
+                            className="form-control"
                             type="date"
                             required
                             onChange={this.handleFieldChange}
                             id="startDate"
                             placeholder="Select start range"
                         />
+                        <label>End Date</label>
                         <input
+                            className="form-control"
                             type="date"
                             required
                             onChange={this.handleFieldChange}
@@ -122,13 +126,17 @@ class ItinararyAddForm extends Component {
                             placeholder="Select end date"
                         />
                         <input
+                            className="form-control"
                             type="text"
                             required
                             onChange={this.handleFieldChange}
                             id="countrySearch"
                             placeholder="Search Countries"
                         />
-                        <button type="button" onClick={() => this.handleCountrySearch(this.state.countrySearch)}>Add Country to Itinerary</button>
+                        <button
+                            className="btn btn-primary"
+                            type="button"
+                            onClick={() => this.handleCountrySearch(this.state.countrySearch)}>Add Country to Itinerary</button>
                         {
                             this.state.countryResults.length > 0 ?
                             this.state.countryResults.map(newCountry => (
@@ -141,6 +149,7 @@ class ItinararyAddForm extends Component {
                             : null
                         }
                         <input
+                            className="form-control"
                             type="text"
                             required
                             onChange={this.handleFieldChange}
@@ -150,9 +159,10 @@ class ItinararyAddForm extends Component {
                     </div>
                     <div className="alignRight">
                         <button
-                        type="button"
-                        onClick={this.addNewItinerary}
-                        >Add Itinerary</button>
+                            className="btn btn-primary"
+                            type="button"
+                            onClick={this.addNewItinerary}>Add Itinerary
+                        </button>
                     </div>
                 </fieldset>
             </form>
