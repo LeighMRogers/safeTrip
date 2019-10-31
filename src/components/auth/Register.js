@@ -74,7 +74,7 @@ class Register extends Component {
                   id="password"
                   placeholder="Password"
                   required="" />
-              <button className="submit" type="submit">Register</button>
+              <button className="btn btn-primary" type="submit">Register</button>
             </form>
           </div>
         </>

@@ -28,7 +28,7 @@ class NavBar extends Component {
             //     </nav>
             // </header>
 
-            <Nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <Nav className="navbar navbar-expand-lg">
                 <Link className="navbar-brand" to="/">Safe Trip</Link>
                 {/* <div className="collapse navbar-collapse" id="navbarNav"> */}
                         <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>

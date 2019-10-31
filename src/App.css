@@ -1,7 +1,7 @@
 /* Nav css */
 
 header {
-  background-color: lightcyan;
+  background-color: #94cef2;
   border-bottom: darkslateblue 5px;
 }
 
@@ -9,12 +9,17 @@ nav {
   display: flex;
   flex-direction: row;
   margin-bottom: 0;
+  color: #94cef2 !important;
+}
+
+.navbar {
+  background-color: #94cef2;
 }
 
 a,
 a:link,
 a:visited {
-    color: #7F7F7F;
+    color: #8C566A;
     text-decoration: none !important;
 }
 .navbar-brand {
