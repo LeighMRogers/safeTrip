@@ -1,12 +1,24 @@
 import React, { Component } from 'react';
 import ItineraryCountryManager from '../../modules/ItineraryCountryManager';
 import ItineraryEditForm from '../itineraries/ItineraryEditForm';
+import "../../App.css"
 
 class CountryCard extends Component {
 
   state = {
     formType: ""
   }
+
+  cardDisplay = () => {
+    if (this.props.country.advisory.score < 3) {
+      return ("greenCard")
+    } else if (this.props.country.advisory.score >= 3 && this.props.country.advisory.score < 5) {
+      return ("yellowCard")
+    } else if (this.props.country.advisory.score === 5) {
+      return ("redCard")
+    }
+  }
+
   componentDidMount = () => {
     this.setState({formType: this.props.formType})
   }
@@ -18,7 +30,8 @@ class CountryCard extends Component {
   render() {
   console.log("form type", this.props.formType)
     return (
-      <div className="card">
+      <section>
+              <div id={this.cardDisplay()}>
         <div className="card-content">
           <h3>I'm a country card!</h3>
           <h3><span className="card-countryName"> {this.props.country.name}</span></h3>
@@ -33,7 +46,8 @@ class CountryCard extends Component {
             : ""
           }
         </div>
-      </div>
+        </div>
+      </section>
     );
   }
 }
