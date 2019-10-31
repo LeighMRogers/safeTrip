@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AuthManager from '../../modules/AuthManager';
+import { Form } from 'reactstrap'
 
 class Login extends Component {
 	// Set initial state
@@ -51,17 +52,30 @@ class Login extends Component {
 	render() {
         return (
             <>
-            <div className="logRegForm">
-                <h3 className="logRegTitle">Login</h3>
-                <form onSubmit={this.handleLogin}>
+            <body className="login-body">
+            <div className="form-group">
+                <div className="login-container">
+                    <h3 className="logRegTitle">Login</h3>
+                    <Form onSubmit={this.handleLogin}>
                         <input onChange={this.handleFieldChange}
-                            required="" autoFocus="" placeholder="User name" name="username" id="userName"/>
-                        <input onChange={this.handleFieldChange} type="password"
-                            required="" type="password" name="password" id="password"
+                            className="form-control"
+                            required=""
+                            autoFocus=""
+                            placeholder="User name"
+                            name="username"
+                            id="userName"/>
+                        <input onChange={this.handleFieldChange}
+                            className="form-control"
+                            type="password"
+                            required=""
+                            name="password"
+                            id="password"
                             placeholder="Password" />
-                    <button className="btn btn-primary" type="submit">Log In</button>
-                </form>
+                        <button className="btn btn-primary" type="submit">Log In</button>
+                    </Form>
+                </div>
              </div>
+             </body>
             </>
         );
     }

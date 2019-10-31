@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AuthManager from '../../modules/AuthManager';
+import { Form } from "reactstrap"
 
 class Register extends Component {
 
@@ -55,28 +56,39 @@ class Register extends Component {
     render() {
       return (
         <>
-          <div className="logRegForm">
-            <h3 className="logRegTitle">Register</h3>
-            <form onSubmit={this.handleRegister}>
-                <input onChange={this.handleFieldChange} type="name"
-                  id="name"
-                  placeholder="Name"
-                  required="" autoFocus="" />
-                <input onChange={this.handleFieldChange}
-                  id="userName"
-                  placeholder="User name"
-                  required="" autoFocus="" />
-                <input onChange={this.handleFieldChange} type="email"
-                  id="email"
-                  placeholder="Email address"
-                  required="" autoFocus="" />
-                <input onChange={this.handleFieldChange} type="password"
-                  id="password"
-                  placeholder="Password"
-                  required="" />
-              <button className="btn btn-primary" type="submit">Register</button>
-            </form>
+          <body className="register-body">
+          <div className="form-group">
+            <div className="register-container">
+              <h3 className="logRegTitle">Register</h3>
+              <Form onSubmit={this.handleRegister}>
+                  <input onChange={this.handleFieldChange}
+                    className="form-control"
+                    type="name"
+                    id="name"
+                    placeholder="Name"
+                    required="" autoFocus="" />
+                  <input onChange={this.handleFieldChange}
+                    className="form-control"
+                    id="userName"
+                    placeholder="User name"
+                    required="" autoFocus="" />
+                  <input onChange={this.handleFieldChange}
+                    className="form-control"
+                    type="email"
+                    id="email"
+                    placeholder="Email address"
+                    required="" autoFocus="" />
+                  <input onChange={this.handleFieldChange}
+                    className="form-control"
+                    type="password"
+                    id="password"
+                    placeholder="Password"
+                    required="" />
+                <button className="btn btn-primary" type="submit">Register</button>
+              </Form>
+              </div>
           </div>
+          </body>
         </>
       )
     }

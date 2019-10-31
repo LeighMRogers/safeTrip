@@ -8,32 +8,83 @@ header {
 nav {
   display: flex;
   flex-direction: row;
-  margin-bottom: 0;
-  color: #94cef2 !important;
 }
 
 .navbar {
   background-color: #94cef2;
 }
 
+.navbar-brand {
+  color: black !important;
+  font-family: 'Racing Sans One', cursive;
+  font-size: 2em !important;
+}
+
+/* Login and Registration CSS */
+
+.form-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 2em;
+}
+
+.form-control {
+  display: block;
+  width: 15em !important;
+  height: calc(1.5em + .75rem + 2px);
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.loginLogo {
+  text-align: center;
+  font-family: 'Racing Sans One', cursive;
+}
+
+.about-container {
+  margin: 2em;
+}
+
+input {
+  margin-top: .25em !important;
+  margin-bottom: .25em !important;
+}
+
+form {
+  width: 100% !important;
+}
+
+.airplane {
+  display: flex;
+  justify-content: center !important;
+}
+
+/* Link CSS */
+
 a,
 a:link,
 a:visited {
-    color: #8C566A;
+    color: #115380;
     text-decoration: none !important;
 }
-.navbar-brand {
-   color: black !important;
-}
 
-/* country card */
+/* Country Card CSS */
 
 #greenCard {
   background-color: lightgreen;
 }
 
 #yellowCard {
-  background-color: yellow;
+  background-color: #FFF062;
 }
 
 #redCard {

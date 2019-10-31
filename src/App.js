@@ -55,9 +55,9 @@ class App extends Component {
       </>
       :<>
        <div className="logRegContainer">
+        <About />
         <Login setUser={this.setUser}/>
         <Register setUser={this.setUser} />
-        <About />
        </div>
       </>}
       </React.Fragment>
