@@ -58,6 +58,22 @@
       "note": "Christmas I wish",
       "userId": 1,
       "id": 1
+    },
+    {
+      "itineraryName": "Chandler goes to Lebanon",
+      "startDate": "2019-10-31",
+      "endDate": "2019-11-21",
+      "note": "Thanks Chandler",
+      "userId": 1,
+      "id": 2
+    },
+    {
+      "itineraryName": "Syria Test",
+      "startDate": "2019-10-31",
+      "endDate": "2019-11-02",
+      "note": "get me out of here",
+      "userId": 1,
+      "id": 3
     }
   ],
   "itineraryCountries": [
@@ -66,6 +82,18 @@
       "countryCode": "PT",
       "countryName": "Portugal",
       "id": 17
+    },
+    {
+      "itineraryId": 2,
+      "countryCode": "LB",
+      "countryName": "Lebanon",
+      "id": 18
+    },
+    {
+      "itineraryId": 3,
+      "countryCode": "SY",
+      "countryName": "Syria",
+      "id": 19
     }
   ]
 }

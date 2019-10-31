@@ -25,3 +25,17 @@ a:visited {
 .navbar-brand {
    color: black !important;
 }
+
+/* country card */
+
+#greenCard {
+  background-color: lightgreen;
+}
+
+#yellowCard {
+  background-color: yellow;
+}
+
+#redCard {
+  background-color: tomato;
+}
