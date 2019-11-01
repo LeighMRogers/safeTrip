@@ -52,11 +52,11 @@
   ],
   "itineraries": [
     {
-      "itineraryName": "Rogers Family to Portugal",
+      "itineraryName": "Rogers Family Trip",
       "startDate": "2019-12-22",
       "endDate": "2019-12-31",
-      "note": "Christmas I wish",
-      "userId": 1,
+      "note": "Maybe next year",
+      "userId": "1",
       "id": 1
     },
     {
@@ -64,35 +64,21 @@
       "startDate": "2019-10-31",
       "endDate": "2019-11-21",
       "note": "Thanks Chandler",
-      "userId": 1,
+      "userId": "1",
       "id": 2
-    },
-    {
-      "itineraryName": "Syria Test",
-      "startDate": "2019-10-31",
-      "endDate": "2019-11-02",
-      "note": "get me out of here",
-      "userId": 1,
-      "id": 3
     }
   ],
   "itineraryCountries": [
     {
-      "itineraryId": 1,
-      "countryCode": "PT",
-      "countryName": "Portugal",
-      "id": 17
-    },
-    {
-      "itineraryId": 2,
+      "itineraryId": "2",
       "countryCode": "LB",
       "countryName": "Lebanon",
       "id": 18
     },
     {
-      "itineraryId": 3,
-      "countryCode": "SY",
-      "countryName": "Syria",
+      "itineraryId": "1",
+      "countryCode": "ES",
+      "countryName": "Spain",
       "id": 19
     }
   ]

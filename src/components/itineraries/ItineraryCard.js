@@ -38,19 +38,21 @@ class ItineraryCard extends Component {
     return (
       <div className="card">
         <div className="card-content">
-          <h2><span className="card-countryName"> Itinerary Card
-          </span></h2>
-          <h3>{this.props.itinerary.itineraryName}</h3>
-          <p>{this.props.itinerary.startDate} to {this.props.itinerary.endDate}</p>
-          {
-              this.state.countryResults.map(newCountry => (
-                <p key={newCountry.iso_alpha2}>{newCountry.name}</p>
-              ))
+          <h3 className="card-header">{this.props.itinerary.itineraryName}</h3>
+          <div className="card-body">
+            {
+                this.state.countryResults.map(newCountry => (
+                  <h5
+                  className="card-title"
+                  key={newCountry.iso_alpha2}>Traveling to: {newCountry.name}</h5>
+                ))
             }
-          <p>{this.props.itinerary.note}</p>
+            <p >Travel Dates: {this.props.itinerary.startDate} to {this.props.itinerary.endDate}</p>
+            <p>Note: {this.props.itinerary.note}</p>
 
-          <Link to={`/${this.props.itineraryId}`}>
-            <button type="button" className="btn btn-primary">Details</button></Link>
+            <Link to={`/${this.props.itineraryId}`}>
+              <button type="button" className="btn btn-primary">Details</button></Link>
+          </div>
         </div>
       </div>
     );

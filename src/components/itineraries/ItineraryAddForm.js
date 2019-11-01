@@ -95,10 +95,11 @@ class ItinararyAddForm extends Component {
 
         return(
             <>
+            <div className="form-group">
             <form>
-                <h3>Add Itinerary</h3>
                 <fieldset>
                     <div className="formgrid">
+                    <h3>Add Itinerary</h3>
                         <input
                             className="form-control"
                             type="text"
@@ -107,47 +108,52 @@ class ItinararyAddForm extends Component {
                             id="itineraryName"
                             placeholder="Itinerary name"
                         />
-                        <label>Start Date</label>
-                        <input
-                            className="form-control"
-                            type="date"
-                            required
-                            onChange={this.handleFieldChange}
-                            id="startDate"
-                            placeholder="Select start range"
-                        />
-                        <label>End Date</label>
-                        <input
-                            className="form-control"
-                            type="date"
-                            required
-                            onChange={this.handleFieldChange}
-                            id="endDate"
-                            placeholder="Select end date"
-                        />
-                        <input
-                            className="form-control"
-                            type="text"
-                            required
-                            onChange={this.handleFieldChange}
-                            id="countrySearch"
-                            placeholder="Search Countries"
-                        />
-                        <button
-                            className="btn btn-primary"
-                            type="button"
-                            onClick={() => this.handleCountrySearch(this.state.countrySearch)}>Add Country to Itinerary</button>
-                        {
-                            this.state.countryResults.length > 0 ?
-                            this.state.countryResults.map(newCountry => (
-                            <CountryCard
-                                formType={this.state.formType}
-                                country={newCountry}
-                                key={newCountry.countryCode}
+                        <div className="add-date-container">
+                            <label className="add-startDate-label">Start Date</label>
+                            <input
+                                className="form-control"
+                                type="date"
+                                required
+                                onChange={this.handleFieldChange}
+                                id="startDate"
+                                placeholder="Select start range"
                             />
-                            ))
-                            : null
-                        }
+                            <label className="add-endDate-label">End Date</label>
+                            <input
+                                className="form-control"
+                                type="date"
+                                required
+                                onChange={this.handleFieldChange}
+                                id="endDate"
+                                placeholder="Select end date"
+                            />
+                        </div>
+                        <div className="add-country">
+                            <input
+                                className="form-control"
+                                type="text"
+                                required
+                                onChange={this.handleFieldChange}
+                                id="countrySearch"
+                                placeholder="Search Countries"
+                            />
+                            <button
+                                id="add-country-button"
+                                className="btn btn-primary"
+                                type="button"
+                                onClick={() => this.handleCountrySearch(this.state.countrySearch)}>Add Country to Itinerary</button>
+                            {
+                                this.state.countryResults.length > 0 ?
+                                this.state.countryResults.map(newCountry => (
+                                <CountryCard
+                                    formType={this.state.formType}
+                                    country={newCountry}
+                                    key={newCountry.countryCode}
+                                />
+                                ))
+                                : null
+                            }
+                        </div>
                         <input
                             className="form-control"
                             type="text"
@@ -166,6 +172,7 @@ class ItinararyAddForm extends Component {
                     </div>
                 </fieldset>
             </form>
+        </div>
         </>
         )
     }
