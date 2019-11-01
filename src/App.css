@@ -20,7 +20,7 @@ nav {
   font-size: 2em !important;
 }
 
-/* Login and Registration CSS */
+/* Form CSS */
 
 .form-group {
   display: flex;
@@ -45,15 +45,6 @@ nav {
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
-.loginLogo {
-  text-align: center;
-  font-family: 'Racing Sans One', cursive;
-}
-
-.about-container {
-  margin: 2em;
-}
-
 input {
   margin-top: .25em !important;
   margin-bottom: .25em !important;
@@ -63,9 +54,48 @@ form {
   width: 100% !important;
 }
 
+/* .add-date-container,
+.add-country {
+  display: flex;
+  flex-direction: row;
+} */
+
+/* .add-endDate-label {
+  padding-left: 20px;
+} */
+
+/* .add-startDate-label,
+.add-endDate-label {
+  padding-right: 10px;
+} */
+
+#add-country-button {
+  /* margin-left: 20px;
+  margin-top: 4px; */
+  height: 38px;
+}
+
+/* Landing Page CSS */
+
+.loginLogo {
+  text-align: center;
+  font-family: 'Racing Sans One', cursive;
+}
+
+.about-container {
+  margin: 2em;
+}
+
 .airplane {
   display: flex;
   justify-content: center !important;
+}
+
+/* Itinerary List CSS */
+
+h1 {
+  margin: .8em;
+  padding-top: .5em;
 }
 
 /* Link CSS */
@@ -89,4 +119,10 @@ a:visited {
 
 #redCard {
   background-color: tomato;
+}
+
+/* Itinerary Card CSS */
+
+.card {
+  margin: 2em;
 }
