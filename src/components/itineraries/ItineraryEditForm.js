@@ -3,7 +3,6 @@ import ItineraryManager from "../../modules/ItineraryManager"
 import CountryManager from '../../modules/CountryManager'
 import ItineraryCountryManager from '../../modules/ItineraryCountryManager'
 import CountryCard from '../countries/CountryCard'
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 class ItineraryEditForm extends Component {
@@ -55,6 +54,25 @@ class ItineraryEditForm extends Component {
       const stateToChange = {}
       stateToChange[evt.target.id] = evt.target.value
       this.setState(stateToChange)
+    }
+
+    getNewCountryData = () => {
+      let newStateArray = [];
+      let newState = {};
+      ItineraryCountryManager.getRelated(this.props.match.params.itineraryId)
+      .then((relatedCountries) => {
+      let promiseArray = relatedCountries.map(relatedCountry => {
+      return CountryManager.getCountry(relatedCountry.countryCode)
+      .then(country => {
+        this.setState({relatedCountryId: relatedCountry.id})
+        newStateArray.push(country.data[relatedCountry.countryCode]);
+        })
+      })
+      Promise.all(promiseArray).then(() => {
+        newState.countryResults = newStateArray
+        this.setState(newState)
+      })
+    })
     }
 
     getData = () => {
@@ -121,7 +139,7 @@ class ItineraryEditForm extends Component {
           newState.countryResults = this.state.countryResults.concat(newStateArray)
           this.setState(newState)
         })
-    })
+      })
 }
 
     render() {
@@ -174,6 +192,7 @@ class ItineraryEditForm extends Component {
               {
               this.state.searchResults.map(newCountry => (
                 <CountryCard
+                    formType={this.state.formType}
                     country={newCountry}
                     key={newCountry.iso_alpha2}
                 />
@@ -186,7 +205,7 @@ class ItineraryEditForm extends Component {
                     country={newCountry}
                     key={newCountry.iso_alpha2}
                     relatedCountryId={this.state.relatedCountryId}
-                    getData={this.getData}
+                    getNewCountryData={this.getNewCountryData}
                 />
                 ))
               }

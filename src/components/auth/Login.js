@@ -52,7 +52,7 @@ class Login extends Component {
 	render() {
         return (
             <>
-            <body className="login-body">
+            <section className="login-body">
             <div className="form-group">
                 <div className="login-container">
                     <h3 className="logRegTitle">Login</h3>
@@ -75,7 +75,7 @@ class Login extends Component {
                     </Form>
                 </div>
              </div>
-             </body>
+             </section>
             </>
         );
     }

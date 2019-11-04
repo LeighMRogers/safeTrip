@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ItineraryCountryManager from '../../modules/ItineraryCountryManager';
-import ItineraryEditForm from '../itineraries/ItineraryEditForm';
 import "../../App.css"
 
 class CountryCard extends Component {
@@ -24,7 +23,7 @@ class CountryCard extends Component {
   }
   handleDelete = () => {
     ItineraryCountryManager.delete(this.props.relatedCountryId)
-    .then(() => this.props.getData());
+    .then(() => this.props.getNewCountryData());
   }
 
   render() {

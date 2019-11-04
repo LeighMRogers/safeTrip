@@ -56,7 +56,7 @@ class Register extends Component {
     render() {
       return (
         <>
-          <body className="register-body">
+          <section className="register-body">
           <div className="form-group">
             <div className="register-container">
               <h3 className="logRegTitle">Register</h3>
@@ -88,7 +88,7 @@ class Register extends Component {
               </Form>
               </div>
           </div>
-          </body>
+          </section>
         </>
       )
     }
