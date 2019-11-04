@@ -145,90 +145,93 @@ class ItineraryEditForm extends Component {
     render() {
       return (
         <>
-        <form>
-          <fieldset>
-            <div className="formgrid">
-              <input
-                type="text"
-                required
-                className="form-control"
-                placeholder='Itinerary name'
-                onChange={this.handleFieldChange}
-                id="itineraryName"
-                value={this.state.itineraryName}
-              />
-              <input
-                  type="date"
-                  className="form-control"
-                  required
-                  onChange={this.handleFieldChange}
-                  id="startDate"
-                  placeholder="Select start range"
-                  value={this.state.startDate}
-
-              />
-              <input
-                  type="date"
-                  className="form-control"
-                  required
-                  onChange={this.handleFieldChange}
-                  id="endDate"
-                  placeholder="Select end date"
-                  value={this.state.endDate}
-              />
-              <input
+        <div className="form-group">
+          <form>
+            <fieldset>
+              <div className="formgrid">
+                <h3>Edit Itinerary</h3>
+                <input
                   type="text"
                   required
                   className="form-control"
-                  placeholder='Search for countries'
+                  placeholder='Itinerary name'
                   onChange={this.handleFieldChange}
-                  id="country"
-                  value={this.state.country}
-              />
-              <button
-                  className="btn btn-primary"
-                  type="button"
-                  onClick={() => {{this.handleCountrySearch(this.state.country)}}}>Add Country to Itinerary</button>
-              {
-              this.state.searchResults.map(newCountry => (
-                <CountryCard
-                    formType={this.state.formType}
-                    country={newCountry}
-                    key={newCountry.iso_alpha2}
+                  id="itineraryName"
+                  value={this.state.itineraryName}
                 />
-                ))
-              }
-              {
-              this.state.countryResults.map(newCountry => (
-                <CountryCard
-                    formType={this.state.formType}
-                    country={newCountry}
-                    key={newCountry.iso_alpha2}
-                    relatedCountryId={this.state.relatedCountryId}
-                    getNewCountryData={this.getNewCountryData}
-                />
-                ))
-              }
-              <input
-                type="text"
-                required
-                className="form-control"
-                placeholder='Write a note'
-                onChange={this.handleFieldChange}
-                id="note"
-                value={this.state.note}
-              />
+                <input
+                    type="date"
+                    className="form-control"
+                    required
+                    onChange={this.handleFieldChange}
+                    id="startDate"
+                    placeholder="Select start range"
+                    value={this.state.startDate}
 
-            </div>
-            <div className="alignRight">
-              <button
-                type="button"
-                onClick={(evt) => {{this.updateItinerary(evt)}}}
-                className="btn btn-primary"
-              >Update Itinerary</button>
-            </div>
-          </fieldset>
-        </form>
+                />
+                <input
+                    type="date"
+                    className="form-control"
+                    required
+                    onChange={this.handleFieldChange}
+                    id="endDate"
+                    placeholder="Select end date"
+                    value={this.state.endDate}
+                />
+                <input
+                    type="text"
+                    required
+                    className="form-control"
+                    placeholder='Search for countries'
+                    onChange={this.handleFieldChange}
+                    id="country"
+                    value={this.state.country}
+                />
+                <button
+                    className="btn btn-primary"
+                    type="button"
+                    onClick={() => {{this.handleCountrySearch(this.state.country)}}}>Add Country to Itinerary</button>
+                {
+                this.state.searchResults.map(newCountry => (
+                  <CountryCard
+                      formType={this.state.formType}
+                      country={newCountry}
+                      key={newCountry.iso_alpha2}
+                  />
+                  ))
+                }
+                {
+                this.state.countryResults.map(newCountry => (
+                  <CountryCard
+                      formType={this.state.formType}
+                      country={newCountry}
+                      key={newCountry.iso_alpha2}
+                      relatedCountryId={this.state.relatedCountryId}
+                      getNewCountryData={this.getNewCountryData}
+                  />
+                  ))
+                }
+                <input
+                  type="text"
+                  required
+                  className="form-control"
+                  placeholder='Write a note'
+                  onChange={this.handleFieldChange}
+                  id="note"
+                  value={this.state.note}
+                />
+
+              </div>
+              <div className="alignRight">
+                <button
+                  type="button"
+                  onClick={(evt) => {{this.updateItinerary(evt)}}}
+                  className="btn btn-primary"
+                >Update Itinerary</button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
         </>
       );
     }
