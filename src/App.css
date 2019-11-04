@@ -69,14 +69,20 @@ form {
   margin: 2em;
 }
 
+.landing-form-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .about-text {
   display: flex;
   justify-content: center !important;
   text-align: center !important;
-  margin-right: 10em;
+  /* margin-right: 10em;
   margin-left: 10em;
   max-width: 20em;
-  min-width: 10em;
+  min-width: 10em; */
 }
 
 .airplane {

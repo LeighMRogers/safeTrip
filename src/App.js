@@ -56,8 +56,10 @@ class App extends Component {
       :<>
        <div className="logRegContainer">
         <About />
-        <Login setUser={this.setUser}/>
-        <Register setUser={this.setUser} />
+        <div className="landing-form-flex">
+          <Login setUser={this.setUser}/>
+          <Register setUser={this.setUser} />
+        </div>
        </div>
       </>}
       </React.Fragment>
