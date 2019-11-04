@@ -15,7 +15,9 @@ class About extends Component {
                                     height="auto"
                                     width="150px"/>
                         </div>
-                        <p>An app for global travelers to create itineraries that automatically display the latest real-time travel advisories on any country.</p>
+                        <div className="about-text">
+                              <p>An app for global travelers to create itineraries that automatically display the latest real-time travel advisories on any country.</p>
+                        </div>
                   </section>
             </section>
             </>
