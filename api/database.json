@@ -77,9 +77,15 @@
     },
     {
       "itineraryId": "1",
-      "countryCode": "ES",
-      "countryName": "Spain",
+      "countryCode": "PT",
+      "countryName": "Portugal",
       "id": 19
+    },
+    {
+      "itineraryId": "2",
+      "countryCode": "IL",
+      "countryName": "Israel",
+      "id": 20
     }
   ]
 }

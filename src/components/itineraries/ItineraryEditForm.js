@@ -3,7 +3,6 @@ import ItineraryManager from "../../modules/ItineraryManager"
 import CountryManager from '../../modules/CountryManager'
 import ItineraryCountryManager from '../../modules/ItineraryCountryManager'
 import CountryCard from '../countries/CountryCard'
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 class ItineraryEditForm extends Component {
@@ -174,6 +173,7 @@ class ItineraryEditForm extends Component {
               {
               this.state.searchResults.map(newCountry => (
                 <CountryCard
+                    formType={this.state.formType}
                     country={newCountry}
                     key={newCountry.iso_alpha2}
                 />
