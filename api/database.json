@@ -76,16 +76,16 @@
       "id": 18
     },
     {
-      "itineraryId": "1",
-      "countryCode": "PT",
-      "countryName": "Portugal",
-      "id": 19
-    },
-    {
       "itineraryId": "2",
       "countryCode": "IL",
       "countryName": "Israel",
       "id": 20
+    },
+    {
+      "itineraryId": "1",
+      "countryCode": "PT",
+      "countryName": "Portugal",
+      "id": 21
     }
   ]
 }

@@ -56,6 +56,25 @@ class ItineraryEditForm extends Component {
       this.setState(stateToChange)
     }
 
+    getNewCountryData = () => {
+      let newStateArray = [];
+      let newState = {};
+      ItineraryCountryManager.getRelated(this.props.match.params.itineraryId)
+      .then((relatedCountries) => {
+      let promiseArray = relatedCountries.map(relatedCountry => {
+      return CountryManager.getCountry(relatedCountry.countryCode)
+      .then(country => {
+        this.setState({relatedCountryId: relatedCountry.id})
+        newStateArray.push(country.data[relatedCountry.countryCode]);
+        })
+      })
+      Promise.all(promiseArray).then(() => {
+        newState.countryResults = newStateArray
+        this.setState(newState)
+      })
+    })
+    }
+
     getData = () => {
 		let userId = this.props.getUser()
 		ItineraryManager.getAll(userId).then(itineraries => {
@@ -120,7 +139,7 @@ class ItineraryEditForm extends Component {
           newState.countryResults = this.state.countryResults.concat(newStateArray)
           this.setState(newState)
         })
-    })
+      })
 }
 
     render() {
@@ -186,7 +205,7 @@ class ItineraryEditForm extends Component {
                     country={newCountry}
                     key={newCountry.iso_alpha2}
                     relatedCountryId={this.state.relatedCountryId}
-                    getData={this.getData}
+                    getNewCountryData={this.getNewCountryData}
                 />
                 ))
               }

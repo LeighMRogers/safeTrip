@@ -23,7 +23,7 @@ class CountryCard extends Component {
   }
   handleDelete = () => {
     ItineraryCountryManager.delete(this.props.relatedCountryId)
-    .then(() => this.props.getData());
+    .then(() => this.props.getNewCountryData());
   }
 
   render() {
