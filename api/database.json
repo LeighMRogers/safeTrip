@@ -66,6 +66,14 @@
       "note": "Thanks Chandler",
       "userId": "1",
       "id": 2
+    },
+    {
+      "itineraryName": "Summer's Summer Vacation",
+      "startDate": "2019-11-13",
+      "endDate": "2019-11-20",
+      "note": "ya mon",
+      "userId": "1",
+      "id": 3
     }
   ],
   "itineraryCountries": [
