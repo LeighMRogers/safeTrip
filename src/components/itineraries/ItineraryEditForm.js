@@ -15,7 +15,7 @@ class ItineraryEditForm extends Component {
         startDate: "",
         endDate: "",
         countrySearch: "",
-        relatedCountryId: "",
+        relatedCountryId: "", //get rid of this after lunch!
         note:"",
         userId: "",
         countryCode: null,
@@ -54,6 +54,19 @@ class ItineraryEditForm extends Component {
       const stateToChange = {}
       stateToChange[evt.target.id] = evt.target.value
       this.setState(stateToChange)
+    }
+
+    handleDelete = (event) => {
+      // if country is in the countryResults Array, delete from itineraryCountries in JSON
+      if (this.state.countryResults.some(country => country.iso_alpha2 === event.target.id)) {
+        console.log("delete is true")
+        ItineraryCountryManager.delete(this.state.relatedCountryId)
+      .then(() => this.getNewCountryData());
+      // if country is in the SearchResults array, remove from searchResults in state.
+      } else if (this.state.searchResults.some(country => country.iso_alpha2 === event.target.id)) {
+        let newStateArray = this.state.searchResults.filter(country => country.iso_alpha2 !== event.target.id)
+        this.setState({searchResults: newStateArray})
+      }
     }
 
     getNewCountryData = () => {
@@ -197,6 +210,7 @@ class ItineraryEditForm extends Component {
                       formType={this.state.formType}
                       country={newCountry}
                       key={newCountry.iso_alpha2}
+                      handleDelete={this.handleDelete}
                   />
                   ))
                 }
@@ -208,6 +222,7 @@ class ItineraryEditForm extends Component {
                       key={newCountry.iso_alpha2}
                       relatedCountryId={this.state.relatedCountryId}
                       getNewCountryData={this.getNewCountryData}
+                      handleDelete={this.handleDelete}
                   />
                   ))
                 }

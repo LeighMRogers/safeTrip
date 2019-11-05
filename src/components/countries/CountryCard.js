@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ItineraryCountryManager from '../../modules/ItineraryCountryManager';
 import "../../App.css"
 
 class CountryCard extends Component {
@@ -21,10 +20,6 @@ class CountryCard extends Component {
   componentDidMount = () => {
     this.setState({formType: this.props.formType})
   }
-  handleDelete = () => {
-    ItineraryCountryManager.delete(this.props.relatedCountryId)
-    .then(() => this.props.getNewCountryData());
-  }
 
   render() {
     return (
@@ -40,7 +35,11 @@ class CountryCard extends Component {
               }
               <p>Last Updated: {this.props.country.advisory.updated}</p>
               { this.state.formType ?
-                <button type="button" onClick={() => this.handleDelete()}>Delete Country</button>
+                <button
+                  className="btn btn-light"
+                  type="button"
+                  id={this.props.country.iso_alpha2}
+                  onClick={(event) => this.props.handleDelete(event)}>Delete Country</button>
                 : ""
               }
             </div>
