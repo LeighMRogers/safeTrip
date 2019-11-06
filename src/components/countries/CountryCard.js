@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import "../../App.css"
+import moment from 'moment'
 
 class CountryCard extends Component {
 
@@ -33,7 +34,7 @@ class CountryCard extends Component {
                 <p>Advisory Message: {this.props.country.advisory.message}</p>
                 : <p>There is currently not an advisory message for {this.props.country.name}</p>
               }
-              <p>Last Updated: {this.props.country.advisory.updated}</p>
+              <p>Last Updated: {moment(this.props.country.advisory.updated).fromNow()}</p>
               { this.state.formType ?
                 <button
                   className="btn btn-light"
