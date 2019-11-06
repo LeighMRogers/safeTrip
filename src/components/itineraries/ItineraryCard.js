@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import ItineraryManager from '../../modules/ItineraryManager'
 import CountryManager from '../../modules/CountryManager';
 import ItineraryCountryManager from '../../modules/ItineraryCountryManager';
+import moment from 'moment'
 
 class ItineraryCard extends Component {
 
@@ -47,7 +48,7 @@ class ItineraryCard extends Component {
                   key={newCountry.iso_alpha2}>Traveling to: {newCountry.name}</h5>
                 ))
             }
-            <p >Travel Dates: {this.props.itinerary.startDate} to {this.props.itinerary.endDate}</p>
+            <p >Travel Dates: {moment(this.props.itinerary.startDate).format('ll')} to {moment(this.props.itinerary.endDate).format('ll')}</p>
             <p>Note: {this.props.itinerary.note}</p>
 
             <Link to={`/${this.props.itineraryId}`}>

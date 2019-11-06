@@ -94,6 +94,12 @@
       "countryCode": "PT",
       "countryName": "Portugal",
       "id": 21
+    },
+    {
+      "itineraryId": "3",
+      "countryCode": "CU",
+      "countryName": "Cuba",
+      "id": 22
     }
   ]
 }

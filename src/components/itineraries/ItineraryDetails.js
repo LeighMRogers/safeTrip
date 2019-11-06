@@ -3,6 +3,7 @@ import ItineraryManager from '../../modules/ItineraryManager';
 import CountryManager from '../../modules/CountryManager';
 import ItineraryCountryManager from '../../modules/ItineraryCountryManager'
 import CountryCard from '../countries/CountryCard'
+import moment from 'moment'
 
 class ItineraryDetails extends Component {
 
@@ -68,7 +69,7 @@ class ItineraryDetails extends Component {
       <div className="card">
         <div className="card-content">
             <h3><span style={{ color: 'darkslategrey' }}>{this.state.itineraryName}</span></h3>
-            <p>Date: {this.state.startDate} to {this.state.endDate}</p>
+            <p>Travel Dates: {moment(this.state.startDate).format('ll')} to {moment(this.state.endDate).format('ll')}</p>
             {
               this.state.countryResults.map(newCountry => (
               <CountryCard
