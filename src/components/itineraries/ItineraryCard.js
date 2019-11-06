@@ -48,9 +48,8 @@ class ItineraryCard extends Component {
                   key={newCountry.iso_alpha2}>Traveling to: {newCountry.name}</h5>
                 ))
             }
-            <p >Travel Dates: {moment(this.props.itinerary.startDate).format('ll')} to {moment(this.props.itinerary.endDate).format('ll')}</p>
-            <p>Note: {this.props.itinerary.note}</p>
-
+            <p><strong>Travel Dates:</strong> {moment(this.props.itinerary.startDate).format('ll')} to {moment(this.props.itinerary.endDate).format('ll')}</p>
+            <p><strong>Note:</strong> {this.props.itinerary.note}</p>
             <Link to={`/${this.props.itineraryId}`}>
               <button type="button" className="btn btn-primary">Details</button></Link>
           </div>
