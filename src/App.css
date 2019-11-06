@@ -67,22 +67,25 @@ form {
 
 .about-container {
   margin: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .landing-form-flex {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .about-text {
   display: flex;
   justify-content: center !important;
   text-align: center !important;
-  min-width: 20em;
-  /* max-width: 30em; */
-  /* margin-right: 10em;
-  margin-left: 10em; */
+  max-width: 25em;
+  font-size: 1.5em;
 }
 
 .airplane {
@@ -124,4 +127,10 @@ a:visited {
 
 .card {
   margin: 2em;
+}
+
+/* Itinerary Details CSS */
+
+#details-edit-btn {
+  margin-right: .3em;
 }

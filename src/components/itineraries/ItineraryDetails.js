@@ -68,27 +68,30 @@ class ItineraryDetails extends Component {
     return (
       <div className="card">
         <div className="card-content">
-            <h3><span style={{ color: 'darkslategrey' }}>{this.state.itineraryName}</span></h3>
-            <p>Travel Dates: {moment(this.state.startDate).format('ll')} to {moment(this.state.endDate).format('ll')}</p>
-            {
-              this.state.countryResults.map(newCountry => (
-              <CountryCard
-                  country={newCountry}
-                  key={newCountry.iso_alpha2}
-              />
-              ))
-            }
-            <p>Note: {this.state.note}</p>
+            <h3 className="card-header"><span style={{ color: 'darkslategrey' }}>{this.state.itineraryName}</span></h3>
+            <div className="card-body">
+              <p><strong>Travel Dates:</strong> {moment(this.state.startDate).format('ll')} to {moment(this.state.endDate).format('ll')}</p>
+              {
+                this.state.countryResults.map(newCountry => (
+                <CountryCard
+                    country={newCountry}
+                    key={newCountry.iso_alpha2}
+                />
+                ))
+              }
+              <p><strong>Note:</strong> {this.state.note}</p>
 
-            <button
-              className="btn btn-primary"
-              type="button"
-              onClick={() => {this.props.history.push(`/${this.props.itineraryId}/edit`)}}>Edit Itinerary</button>
-            <button
-              className="btn btn-primary"
-              type="button"
-              disabled={this.state.loadingStatus}
-              onClick={this.handleDelete}>Delete Itinerary</button>
+              <button
+                className="btn btn-primary"
+                id="details-edit-btn"
+                type="button"
+                onClick={() => {this.props.history.push(`/${this.props.itineraryId}/edit`)}}>Edit Itinerary</button>
+              <button
+                className="btn btn-primary"
+                type="button"
+                disabled={this.state.loadingStatus}
+                onClick={this.handleDelete}>Delete Itinerary</button>
+            </div>
         </div>
       </div>
     );
