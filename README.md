@@ -1,10 +1,18 @@
 # Safe Trip: An App for Travelers
 
-After a natural or human-made disaster, humanitarian aid workers often provide relief or development to people in some of the most unstable and unsafe places in the world, often at the last minute. Because of these challenges, they often lack access to information they need to keep themselves and their aid recipients safe.
+## Project Overview
 
-This app aims to provide these users, or any global traveler, with the latest real-time travel information on any country one seeks to visit, including travel advisories, vaccination suggestions, and embassy contact details. It also seeks to serve as a portal for creating itineraries for trips that include the latest safety advisories, since often areas become dangerous and one must take extra precautions even while in country. These itineraries should be postable, editable, and deletable.
+After a natural or human-made disaster, humanitarian aid workers often provide relief or development to people in some of the most unstable and unsafe places in the world, often at the last minute. Because of these challenges, they often lack access to information they need to keep themselves and their aid recipients safe. Casual tourists also want to stay safe in a foreign country or research the safety of a country as they plan travel.
 
-With these main functionalities, I hope to create a product that offers users a helpful trip planning tool where safety is the main priority.
+To solve these issues, this app provides users with real-time travel advisories for any country. It also seeks to serve as a portal for creating itineraries for trips that include country advisories. These itineraries are postable, editable, and deletable.
+
+## Challenge Statement
+
+How might we inform global travelers of country-specific safety advisories during trip planning and travel?
+
+## Personas
+
+![Safe Trip App Persona Aid Worker](https://github.com/LeighMRogers/safe-trip-capstone/blob/master/public/images/MargotCapstonePersona.png)
 
 ### How to Run this App
 
