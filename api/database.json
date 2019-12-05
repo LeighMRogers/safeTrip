@@ -53,53 +53,25 @@
   "itineraries": [
     {
       "itineraryName": "Rogers Family Trip",
-      "startDate": "2019-12-22",
-      "endDate": "2019-12-31",
-      "note": "Maybe next year",
+      "startDate": "2020-04-13",
+      "endDate": "2020-04-28",
+      "note": "Definitely this spring",
       "userId": "1",
       "id": 1
-    },
-    {
-      "itineraryName": "Chandler goes to Lebanon",
-      "startDate": "2019-10-31",
-      "endDate": "2019-11-21",
-      "note": "Thanks Chandler",
-      "userId": "1",
-      "id": 2
-    },
-    {
-      "itineraryName": "Summer's Summer Vacation",
-      "startDate": "2019-11-13",
-      "endDate": "2019-11-20",
-      "note": "ya mon",
-      "userId": "1",
-      "id": 3
     }
   ],
   "itineraryCountries": [
     {
-      "itineraryId": "2",
-      "countryCode": "LB",
-      "countryName": "Lebanon",
-      "id": 18
-    },
-    {
-      "itineraryId": "2",
-      "countryCode": "IL",
-      "countryName": "Israel",
-      "id": 20
-    },
-    {
       "itineraryId": "1",
       "countryCode": "PT",
       "countryName": "Portugal",
-      "id": 21
+      "id": 23
     },
     {
-      "itineraryId": "3",
-      "countryCode": "CU",
-      "countryName": "Cuba",
-      "id": 22
+      "itineraryId": "1",
+      "countryCode": "ES",
+      "countryName": "Spain",
+      "id": 28
     }
   ]
 }
