@@ -58,6 +58,22 @@
       "note": "Definitely this spring",
       "userId": "1",
       "id": 1
+    },
+    {
+      "itineraryName": "India Trip",
+      "startDate": "2019-12-13",
+      "endDate": "2019-12-19",
+      "note": "Have fun",
+      "userId": "1",
+      "id": 2
+    },
+    {
+      "itineraryName": "Aid work in Somalia",
+      "startDate": "2019-12-19",
+      "endDate": "2019-12-27",
+      "note": "Be safe",
+      "userId": 1,
+      "id": 3
     }
   ],
   "itineraryCountries": [
@@ -72,6 +88,24 @@
       "countryCode": "ES",
       "countryName": "Spain",
       "id": 28
+    },
+    {
+      "itineraryId": 2,
+      "countryCode": "IN",
+      "countryName": "India",
+      "id": 29
+    },
+    {
+      "itineraryId": "2",
+      "countryCode": "LK",
+      "countryName": "Sri Lanka",
+      "id": 30
+    },
+    {
+      "itineraryId": 3,
+      "countryCode": "SO",
+      "countryName": "Somalia",
+      "id": 31
     }
   ]
 }
