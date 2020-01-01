@@ -12,7 +12,11 @@ How might we inform global travelers of country-specific safety advisories durin
 
 ## Personas
 
+Creating this app always stemmed from my background working at global aid organizations, and the first types of people I thought of who would likely need and use a tool like Safe Trip are my colleagues who did the hard work of traveling overseas to places most would say are too dangerous, not typical tourist destinations, but where people go anyway after a disaster strikes. Two types of people I knew would need an app like this were aid workers and photographers capturing images of the work on the ground.
+
 ![Safe Trip App Persona Aid Worker](https://github.com/LeighMRogers/safe-trip-capstone/blob/master/public/images/MargotCapstonePersona.png)
+
+![Safe Trip App Persona Photojournalist](https://github.com/LeighMRogers/safe-trip-capstone/blob/master/public/images/PaulJeffreyPersona.png)
 
 ### How to Run this App
 
