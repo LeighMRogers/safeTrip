@@ -66,11 +66,13 @@ Creating this app always stemmed from my background working at global aid organi
 
 ## Journey Map
 
+![Capstone Mockup](https://github.com/LeighMRogers/safe-trip-capstone/blob/master/public/images/SafeTripJourneyMap.jpg)
+
 ## Mockups
 
-![Capstone Mockup](https://github.com/LeighMRogers/safe-trip-capstone/blob/master/public/images/CapstoneWireframe1.jpg)
+![Capstone Mockup](https://github.com/LeighMRogers/safe-trip-capstone/blob/master/public/images/capstoneWireframe1.jpg)
 
-![Capstone Mockup](https://github.com/LeighMRogers/safe-trip-capstone/blob/master/public/images/CapstoneWireframe2.jpg)
+![Capstone Mockup](https://github.com/LeighMRogers/safe-trip-capstone/blob/master/public/images/capstoneWireframe2.jpg)
 
 ## Ideation and Usability Testing
 
