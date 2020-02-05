@@ -111,6 +111,11 @@ The feature font for the logo was [Racing Sans One](https://fonts.google.com/spe
 * Racing Sans One represented a font that was on the move, like a traveler, with its forward-angled italics.
 * A sans-serif font is perfect for readability and legibility, especially smaller text.
 
+## Lessons Learned
+Making a capstone in React for the first time with a number of time constraints was one of the most stressful things I've ever done. It made me doubt myself at first but by the end I realized I knew more than I thought about Javascript. Also, functionality is way more important than look and feel: A pretty app doesn't do much if it doesn't work!
+
+Going into a UI/UX focus only shows how much more important it is to have a plan about any project and that those plans should be based on users and their interactions with your designs, not the whims of your personal preference.
+
 ### How to Run this App
 
 #### Follow these steps exactly
